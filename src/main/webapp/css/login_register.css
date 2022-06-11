@@ -1,0 +1,96 @@
+.login_register_title {
+    position: absolute;
+    top: 115%;
+    left: 42%;
+    font-size: 35px;
+}
+
+.username {
+    position: absolute;
+    top: 135%;
+    left: 45%;
+    font-size: 30px;
+}
+
+.password {
+    position: absolute;
+    top: 167%;
+    left: 45%;
+    font-size: 30px;
+}
+
+.email_t {
+    position: absolute;
+    top: 197.5%;
+    left: 46.45%;
+    font-size: 30px;
+}
+
+.show_text {
+    color: black;
+}
+
+.hide_text {
+    color: darkgray;
+}
+
+a {
+    color: inherit;
+    text-decoration:none
+}
+
+input[type=text] {
+    width: 20%;
+    position: absolute;
+    top: 150%;
+    left: 39%;
+    height: 50px;
+    font-size: 130%;
+    border-radius: 14px;
+    color: black;
+}
+input[type=password] {
+    width: 20%;
+    position: absolute;
+    top: 180%;
+    left: 39%;
+    height: 50px;
+    font-size: 130%;
+    border-radius: 14px;
+    color: black;
+}
+
+.email_input {
+    width: 20%;
+    position: absolute;
+    top: 210%;
+    left: 39%;
+    height: 50px;
+    font-size: 130%;
+    border-radius: 14px;
+    color: black;
+}
+
+.login_btn {
+    width: 10%;
+    position: absolute;
+    top: 205%;
+    left: 43.5%;
+    height: 50px;
+    font-size: 130%;
+    border-radius: 14px;
+    background-color: #333;
+    color: white;
+}
+
+.register_btn {
+    width: 10%;
+    position: absolute;
+    top: 233%;
+    left: 43.5%;
+    height: 50px;
+    font-size: 130%;
+    border-radius: 14px;
+    background-color: #333;
+    color: white;
+}
