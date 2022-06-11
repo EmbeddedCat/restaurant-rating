@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="../css/index.css">
     <link rel="stylesheet" href="../css/login_register.css">
+    <script src="../js/verify_inputs.js"></script>
 </head>
 <body>
     <!-- Header -->
@@ -24,26 +25,27 @@
         <div class="hero-text">
             <h1 style="font-size:50px">Restaurant Rating</h1>
         </div>
+    </div>
 
-        <div class="login_register_title">
-            <b>
-                <a href="#login" class="show_text" >Login</a> / <a href="../register/register.jsp" class="hide_text">Register</a>
-            </b>
-        </div>
+    <div class="login_register_title">
+        <b>
+            <a href="#login" class="show_text" >Login</a> / <a href="../register/register.jsp" class="hide_text">Register</a>
+        </b>
+    </div><br><br><br><br><br><br><br><br><br>
 
+    <div>
         <!-- TODO - Here call the servlet-->
-        <form>
-            <div class="username">
-                Username
+        <form onsubmit="verify_login()">
+            <div class="input_texts">
+                <b>Username</b>
             </div>
-            <input type="text" placeholder="username">
-            <div class="password">
-                Password
+            <input type="text" id="login_username" placeholder="username"><br>
+            <div class="input_texts">
+                <b>Password</b>
             </div>
-            <input type="password" placeholder="password">
-            <input type="button" class="login_btn" value="Login">
+            <input type="password" id="login_password" placeholder="password"><br><br>
+            <input type="submit" class="login_btn" value="Login">
         </form>
-
     </div>
 </body>
 </html>

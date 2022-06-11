@@ -26,7 +26,17 @@
                 </div>
             </div>
 
+            <div id="search_rest">
+                <form>
+                    <div id="restaurant_name_s">
+                        Restaurant name or Restaurant category
+                    </div>
+                    <input type="text" placeholder="Restaurant name">
 
-
+                    <select>
+                        <option value="something">someting</option>
+                    </select>
+                </form>
+            </div>
     </body>
 </html>
