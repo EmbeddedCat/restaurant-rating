@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="../css/index.css">
     <link rel="stylesheet" href="../css/login_register.css">
+    <script src="../js/verify_inputs.js"></script>
 </head>
 <body>
     <!-- Header -->
@@ -23,28 +24,33 @@
         <div class="hero-text">
             <h1 style="font-size:50px">Restaurant Rating</h1>
         </div>
+    </div>
+    <div class="login_register_title">
+        <b>
+            <a href="../login/login.jsp" class="hide_text">Login</a> / <a href="#register" class="show_text">Register</a>
+        </b>
+    </div><br><br><br><br><br><br><br><br><br>
 
-        <div class="login_register_title">
-            <b>
-                <a href="../login/login.jsp" class="hide_text">Login</a> / <a href="#register" class="show_text">Register</a>
-            </b>
-        </div>
-
+    <div>
         <!-- TODO - Here call the servlet -->
-        <form>
-            <div class="username">
-                Username
+        <form onsubmit="verify_register()">
+            <div class="input_texts">
+                <b>Username</b>
             </div>
-            <input type="text" placeholder="username">
-            <div class="password">
-                Password
+            <input type="text" id="register_username" placeholder="username"><br>
+            <div class="input_texts">
+                <b>Password</b>
             </div>
-            <input type="password" placeholder="password">
-            <div class="email_t">
-                Email
+            <input type="password" id="register_password" placeholder="password"><br>
+            <div class="input_texts">
+                <b>Password Verify</b>
             </div>
-            <input class="email_input" placeholder="example@exp.com">
-            <input type="button" class="register_btn" value="Register">
+            <input type="password" id="register_password_v" placeholder="password verification"><br>
+            <div class="input_texts">
+                <b>Email</b>
+            </div>
+            <input type="email" id="register_email" placeholder="example@exp.com"><br><br>
+            <input type="submit" class="register_btn" value="Register">
         </form>
     </div>
 </body>
