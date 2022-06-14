@@ -30,5 +30,10 @@ CREATE TABLE stared
     foreign key(restaurant) references restaurant
 );
 
-
+CREATE TABLE app_admin 
+(
+    username varchar(50),
+    primary key (username),
+    foreign key (username) references rest_user
+);
 
