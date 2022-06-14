@@ -7,7 +7,7 @@ import javax.servlet.http.HttpSession;
 
 public abstract class User {
 
-    // This method is responsible for user login.
+    // This method is responsible for user LoginServlet.
     abstract public void login(String username, String pass) throws FailedToLogin,
                                                                     UserNotFound;
 
