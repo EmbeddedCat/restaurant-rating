@@ -15,7 +15,7 @@ public class QueryManager {
                                         Connection conn,
                                         boolean isWrite,
                                         Object... parameters) throws SQLException {
-        int index; 
+        int index;
 
         PreparedStatement preparedStatement = conn.prepareStatement(query);
         List<Object> userInput = Arrays.asList(parameters);
@@ -25,7 +25,6 @@ public class QueryManager {
             if (input instanceof String) {
                 preparedStatement.setString(index, (String) input);
             }
-            else if (input instanceof Long) preparedStatement.setLong(index, (Long) input);
         }
         return (isWrite)? preparedStatement.executeUpdate() : preparedStatement.executeQuery();
     }
@@ -50,7 +49,7 @@ public class QueryManager {
                                                           String table,
                                                           Object... retrieves) throws SQLException {
 
-
+        if (conn == null) throw new SQLException("Failed to establish connection");
         ResultSet resultsFromDB;
         resultsFromDB = (ResultSet) QueryManager.queryExecutor(MessageFormat.format(query, table), conn,false, selector);
         assert resultsFromDB != null;
@@ -61,9 +60,8 @@ public class QueryManager {
                                       Connection conn,
                                       String table,
                                       Object... fields) throws SQLException {
-
+        if (conn == null) throw new SQLException("Failed to establish connection");
         QueryManager.queryExecutor(MessageFormat.format(query, table), conn, true, fields);
     }
-
 
 }

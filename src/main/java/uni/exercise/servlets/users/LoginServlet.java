@@ -38,9 +38,11 @@ public class LoginServlet extends HttpServlet {
             request.getSession().setAttribute("name", userDetails.get("name"));
             request.getSession().setAttribute("admin_userid", userDetails.get("admin_userid"));
             response.sendRedirect(request.getContextPath()+"");*/
+            // TODO - redirect to user page.
         }
         catch (UserNotFound | FailedToLogin e) {
             throw new RuntimeException(e);
+            // TODO - redirect to user failed login page ( remove the exception above ).
         }
 
 

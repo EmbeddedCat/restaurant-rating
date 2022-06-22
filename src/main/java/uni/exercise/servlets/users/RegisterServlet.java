@@ -36,8 +36,9 @@ public class RegisterServlet extends HttpServlet {
                                 request.getParameter("address"),
                                 request.getParameter("gmail")
                                );
+            // TODO - redirect to success page.
         } catch (SQLException e) {
-            throw new RuntimeException(e);
+            throw new RuntimeException(e); // TODO - redirect to failed page.
         }
     }
 }
