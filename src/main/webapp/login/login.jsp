@@ -35,15 +35,15 @@
 
     <div>
         <!-- TODO - Here call the servlet-->
-        <form onsubmit="verify_login()">
+        <form action="../LoginServlet" method="post" onsubmit="verify_login()">
             <div class="input_texts">
                 <b>Username</b>
             </div>
-            <input type="text" id="login_username" placeholder="username"><br>
+            <input type="text" id="login_username" name="username" placeholder="username"><br>
             <div class="input_texts">
                 <b>Password</b>
             </div>
-            <input type="password" id="login_password" placeholder="password"><br><br>
+            <input type="password" id="login_password" name="password" placeholder="password"><br><br>
             <input type="submit" class="login_btn" value="Login">
         </form>
     </div>
