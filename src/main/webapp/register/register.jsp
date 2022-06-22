@@ -37,11 +37,11 @@
             <div class="input_texts">
                 <b>Username</b>
             </div>
-            <input type="text" id="register_username" placeholder="username"><br>
+            <input type="text" id="register_username" name="username" placeholder="username"><br>
             <div class="input_texts">
                 <b>Password</b>
             </div>
-            <input type="password" id="register_password" placeholder="password"><br>
+            <input type="password" id="register_password"  name="password" placeholder="password"><br>
             <div class="input_texts">
                 <b>Password Verify</b>
             </div>
@@ -49,7 +49,12 @@
             <div class="input_texts">
                 <b>Email</b>
             </div>
-            <input type="email" id="register_email" placeholder="example@exp.com"><br><br>
+            <input type="email" id="register_email" name="gmail" placeholder="example@exp.com"><br>
+            <div class="input_texts">
+                <b>Address</b>
+            </div>
+            <input type="text" id="register_address" name="address" placeholder="Your address"><br><br>
+
             <input type="submit" class="register_btn" value="Register">
         </form>
     </div>
