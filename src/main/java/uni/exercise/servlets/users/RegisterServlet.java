@@ -25,7 +25,6 @@ public class RegisterServlet extends HttpServlet {
     public void doPost(HttpServletRequest request,
                        HttpServletResponse response) throws ServletException, IOException {
 
-
         try {
             QueryManager.saveToDatabase(
                                 Queries.ADD_USER.get_query(),

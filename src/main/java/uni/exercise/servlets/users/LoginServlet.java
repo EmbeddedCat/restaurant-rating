@@ -33,7 +33,6 @@ public class LoginServlet extends HttpServlet {
             customer.login(request.getParameter("username"), request.getParameter("password"));
 
             /*userDetails = customer.getUserDetails(request.getParameter("username"));
-            // Εδω οριζουμε τι θα προωθησουμε στο jsp.
             request.getSession().setAttribute("username", userDetails.get("username"));
             request.getSession().setAttribute("name", userDetails.get("name"));
             request.getSession().setAttribute("admin_userid", userDetails.get("admin_userid"));
@@ -44,7 +43,6 @@ public class LoginServlet extends HttpServlet {
             throw new RuntimeException(e);
             // TODO - redirect to user failed login page ( remove the exception above ).
         }
-
-
+        
     }
 }
