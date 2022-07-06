@@ -1,11 +1,13 @@
 package uni.exercise.db;
 
 
+import javax.xml.transform.Result;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.text.MessageFormat;
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.HashMap;
 import java.util.List;
@@ -14,30 +16,28 @@ public class QueryManager {
     private static Object queryExecutor(String query,
                                         Connection conn,
                                         boolean isWrite,
-                                        Object... parameters) throws SQLException {
+                                        String... parameters) throws SQLException {
         int index;
 
         PreparedStatement preparedStatement = conn.prepareStatement(query);
-        List<Object> userInput = Arrays.asList(parameters);
+        List<String> userInput = Arrays.asList(parameters);
 
-        for (Object input : userInput) {
+        for (String input : userInput) {
             index = userInput.indexOf(input) + 1;
-            if (input instanceof String) {
-                preparedStatement.setString(index, (String) input);
-            }
+            preparedStatement.setString(index, (String) input);
         }
         return (isWrite)? preparedStatement.executeUpdate() : preparedStatement.executeQuery();
     }
 
     private static HashMap<String, String> retrieveData(ResultSet fromDB,
-                                                        List<Object> dataToRetrieve) throws SQLException {
+                                                        List<String> dataToRetrieve) throws SQLException {
 
 
         HashMap<String, String> retrievedData = new HashMap<>();
         if (!fromDB.next()) return new HashMap<>();
 
-        for (Object retrieve : dataToRetrieve) {
-            retrievedData.put((String) retrieve, fromDB.getString((String) retrieve));
+        for (String retrieve : dataToRetrieve) {
+            retrievedData.put(retrieve, fromDB.getString(retrieve));
         }
 
         return retrievedData;
@@ -47,7 +47,7 @@ public class QueryManager {
                                                           String query,
                                                           Connection conn,
                                                           String table,
-                                                          Object... retrieves) throws SQLException {
+                                                          String... retrieves) throws SQLException {
 
         if (conn == null) throw new SQLException("Failed to establish connection");
         ResultSet resultsFromDB;
@@ -55,12 +55,36 @@ public class QueryManager {
         return QueryManager.retrieveData(resultsFromDB, Arrays.asList(retrieves));
     }
 
+    // gets more than one column
+    public static ArrayList<HashMap<String, String>> getMultipleColDB(String query,
+                                                                      Connection conn,
+                                                                      String table,
+                                                                      String... params) throws SQLException {
+        if (conn == null) throw new SQLException("Failed to establish connection");
+
+        ArrayList<HashMap<String, String>> records = new ArrayList<>();
+        ArrayList<String> parameters = (ArrayList<String>) Arrays.asList(params);
+        HashMap<String, String> tmp = null;
+        ResultSet columns = (ResultSet) QueryManager.queryExecutor(MessageFormat.format(query, table), conn, false, params);
+
+        int curr_col = 0;
+        // while there are results make the appropriate number of hashmaps and store each record..
+        while (columns.next()) {
+            tmp = new HashMap<>();
+            for (String p : parameters
+                 ) {
+                tmp.put(p, columns.getString(p));
+            }
+            records.add(tmp);
+        }
+        return records;
+    }
+
     public static void saveToDatabase(String query,
                                       Connection conn,
                                       String table,
-                                      Object... fields) throws SQLException {
+                                      String... fields) throws SQLException {
         if (conn == null) throw new SQLException("Failed to establish connection");
         QueryManager.queryExecutor(MessageFormat.format(query, table), conn, true, fields);
     }
-
 }
