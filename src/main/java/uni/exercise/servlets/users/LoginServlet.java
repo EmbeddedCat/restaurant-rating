@@ -32,10 +32,11 @@ public class LoginServlet extends HttpServlet {
             customer.login(request.getParameter("username"), request.getParameter("password"));
 
             // forward info to user profile.
+            request.getSession().setAttribute("is_login", true);
             request.getSession().setAttribute("username", customer.getUsername());
-            request.getSession().setAttribute("mail", customer.getMail());
+            request.getSession().setAttribute("email", customer.getMail());
             request.getSession().setAttribute("address", customer.getAddress());
-            response.sendRedirect(request.getContextPath()+"");
+            //response.sendRedirect(request.getContextPath()+"");
         }
         catch (UserNotFound | FailedToLogin e) {
             throw new RuntimeException(e);
