@@ -1,0 +1,82 @@
+.user-hero-image {
+    background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url("../images/user_header_image.jpg");
+    height: 50%;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    position: relative;
+}
+
+.user-hero-text {
+    text-align: center;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    color: white;
+}
+
+.user-hero-center-image {
+    border: none;
+    outline: 0;
+    padding: 10px 25px;
+    color: black;
+}
+
+.user-hero-text button:hover {
+    background-color: #555;
+    color: white;
+}
+
+img {
+    margin-top: 230px;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    height: 290px;
+    width: 290px;
+    border-radius: 50%;
+}
+
+.logout_btn {
+    overflow: hidden;
+    float: right;
+    color: #f2f2f2;
+    background-color: #04AA6D;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+    font-size: 18px;
+}
+
+.prof_username {
+    text-align: center;
+    font-size: 22px;
+}
+
+
+#details {
+    font-family: Arial, Helvetica, sans-serif;
+    border-collapse: collapse;
+    width: 50%;
+    margin-left: auto;
+    margin-right: auto;
+    font-size: 18px;
+}
+
+#details td, #details th {
+    border: 5px solid #ddd;
+    padding: 8px;
+}
+
+#details tr:nth-child(even){background-color: #f2f2f2;}
+
+#details tr:hover {background-color: #ddd;}
+
+#details th {
+    padding-top: 12px;
+    padding-bottom: 12px;
+    text-align: left;
+    background-color: #04AA6D;
+    color: white;
+}
