@@ -1,6 +1,7 @@
 package uni.exercise.users;
 
 import uni.exercise.db.DBConnection;
+import uni.exercise.db.Queries;
 import uni.exercise.db.QueryManager;
 import uni.exercise.users.user_exceptions.FailedToLogin;
 import uni.exercise.users.user_exceptions.UserNotFound;
@@ -36,6 +37,26 @@ public abstract class User {
 
     public String getMail() {
         return mail;
+    }
+
+    public void getCredentials(String username) throws SQLException {
+        HashMap<String, String> dbCredentials;
+
+        dbCredentials = QueryManager.getFromDatabase(
+                username,
+                Queries.RETRIEVE_DETAILS.getQuery(),
+                DBConnection.getConnection(),
+                "rest_user",
+                "username",
+                "password",
+                "address",
+                "email"
+        );
+
+        this.username = dbCredentials.get("username");
+        this.password = dbCredentials.get("password");
+        this.mail     = dbCredentials.get("email");
+        this.address  = dbCredentials.get("address");
     }
 
     // This method is responsible for user LoginServlet.
