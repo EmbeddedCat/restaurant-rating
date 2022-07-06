@@ -3,7 +3,7 @@ CREATE TABLE rest_user
     username  varchar(50),
     password  varchar(120),
     address   varchar(80),
-    gmail     varchar(255),
+    mail     varchar(255),
     primary key(username)
 );
 

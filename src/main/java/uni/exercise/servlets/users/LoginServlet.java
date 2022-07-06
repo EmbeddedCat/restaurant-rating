@@ -27,17 +27,15 @@ public class LoginServlet extends HttpServlet {
                        HttpServletResponse response) throws ServletException, IOException {
 
         Customer customer = new Customer();
-        HashMap<String, String> userDetails;
 
         try {
             customer.login(request.getParameter("username"), request.getParameter("password"));
 
-            /*userDetails = customer.getUserDetails(request.getParameter("username"));
-            request.getSession().setAttribute("username", userDetails.get("username"));
-            request.getSession().setAttribute("name", userDetails.get("name"));
-            request.getSession().setAttribute("admin_userid", userDetails.get("admin_userid"));
-            response.sendRedirect(request.getContextPath()+"");*/
-            // TODO - redirect to user page.
+            // forward info to user profile.
+            request.getSession().setAttribute("username", customer.getUsername());
+            request.getSession().setAttribute("mail", customer.getMail());
+            request.getSession().setAttribute("address", customer.getAddress());
+            response.sendRedirect(request.getContextPath()+"");
         }
         catch (UserNotFound | FailedToLogin e) {
             throw new RuntimeException(e);
