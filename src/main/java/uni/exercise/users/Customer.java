@@ -11,36 +11,47 @@ import java.sql.SQLException;
 import java.util.HashMap;
 
 public class Customer extends User {
-    @Override
-    public void login(String username, String pass) throws UserNotFound,
-                                                           FailedToLogin {
+
+
+    public void getCredentials(String username) throws SQLException {
         HashMap<String, String> dbCredentials;
 
-        try {
-            dbCredentials = QueryManager.getFromDatabase(
+        dbCredentials = QueryManager.getFromDatabase(
                     username,
-                    Queries.RETRIEVE_DETAILS.get_query(),
+                    Queries.RETRIEVE_DETAILS.getQuery(),
                     DBConnection.getConnection(),
                     "rest_user",
                     "username",
-                    "password"
-            );
-        }
-        catch (SQLException e) {
+                    "password",
+                    "address",
+                    "mail"
+        );
+
+        this.username = dbCredentials.get("username");
+        this.password = dbCredentials.get("password");
+        this.mail     = dbCredentials.get("mail");
+        this.address  = dbCredentials.get("address");
+    }
+
+
+    @Override
+    public void login(String username, String pass) throws UserNotFound,
+                                                           FailedToLogin {
+
+        try {
+            this.getCredentials(username);
+        } catch (SQLException e) {
             throw new RuntimeException(e);
         }
+        String hashedPassword = this.password; // TODO - make it secure.
 
-        String fromDBUsername = dbCredentials.get("username");
-        String fromDBPassword = dbCredentials.get("password");
-        String hashedPassword = fromDBPassword; // TODO - make it secure.
-
-        if (!(username.equals(fromDBUsername) && hashedPassword.equals(fromDBPassword))) {
+        if (!(username.equals(this.username) && hashedPassword.equals(this.password))) {
             throw new UserNotFound("Login Failed...");
         }
     }
 
     @Override
     public void logout(HttpSession session) {
-
+        session.invalidate();
     }
 }

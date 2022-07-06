@@ -32,7 +32,6 @@
     </div><br><br><br><br><br><br><br><br><br>
 
     <div>
-        <!-- TODO - Here call the servlet -->
         <form action="../RegisterServlet" method="post" onsubmit="verify_register()">
             <div class="input_texts">
                 <b>Username</b>

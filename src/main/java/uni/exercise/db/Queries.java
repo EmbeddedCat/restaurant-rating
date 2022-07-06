@@ -12,7 +12,7 @@ public enum Queries {
         this.query = query;
     }
 
-    public String get_query() {
+    public String getQuery() {
         return this.query;
     }
 

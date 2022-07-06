@@ -27,7 +27,7 @@ public class RegisterServlet extends HttpServlet {
 
         try {
             QueryManager.saveToDatabase(
-                                Queries.ADD_USER.get_query(),
+                                Queries.ADD_USER.getQuery(),
                                 DBConnection.getConnection(),
                                 "rest_user",
                                 request.getParameter("username"),
