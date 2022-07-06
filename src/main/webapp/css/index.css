@@ -67,6 +67,25 @@ body, html {
     color: white;
 }
 
-#search_rest {
+#search_rest_text {
+    text-align: center;
+    font-size: 30px;
+}
+
+input {
     position: relative;
+    border: none;
+    border-bottom: 1px solid gray;
+    margin-top: 20px;
+    margin-bottom: 10px;
+    width: 20%;
+    left: 39%;
+    height: 50px;
+    font-size: 130%;
+    color: black;
+}
+
+#search_rest {
+    margin-left: 8%;
+    margin-right: 5%;
 }
