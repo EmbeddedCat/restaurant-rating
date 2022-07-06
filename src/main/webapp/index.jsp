@@ -25,18 +25,22 @@
                     <h1 style="font-size:50px">Restaurant Rating</h1>
                 </div>
             </div>
+            <br><br><br>
+            <br><br><br>
+            <br><br><br>
 
-            <div id="search_rest">
+            <div>
                 <form>
-                    <div id="restaurant_name_s">
-                        Restaurant name or Restaurant category
+                    <div id="search_rest_text">
+                        Restaurant name
+                    </div><br><br>
+                    <div id="search_rest">
+                        <input type="text" placeholder="Restaurant name"><br>
+                        <input type="submit" value="Search">
                     </div>
-                    <input type="text" placeholder="Restaurant name">
-
-                    <select>
-                        <option value="something">someting</option>
-                    </select>
                 </form>
             </div>
+
+            <!-- TODO show 5 restaurants -->
     </body>
 </html>
