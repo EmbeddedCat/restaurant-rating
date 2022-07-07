@@ -1,0 +1,6 @@
+
+
+function star_counter()
+{
+
+}
