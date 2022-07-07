@@ -25,11 +25,12 @@ public class RegisterServlet extends HttpServlet {
     public void doPost(HttpServletRequest request,
                        HttpServletResponse response) throws ServletException, IOException {
         QueryManager queryManager = new QueryManager();
+        DBConnection dbConnection = new DBConnection();
 
         try {
             queryManager.saveToDatabase(
                                 Queries.ADD_USER.getQuery(),
-                                DBConnection.getConnection(),
+                                dbConnection.getConnection(),
                                 "rest_user",
                                 request.getParameter("username"),
                                 request.getParameter("password"),

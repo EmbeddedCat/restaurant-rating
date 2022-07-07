@@ -8,24 +8,28 @@ import java.sql.Connection;
 import java.sql.SQLException;
 
 public class DBConnection {
-    private static Connection conn = null;
+    private Connection conn = null;
 
-    public static Connection getConnection() {
+    public Connection getConnection() {
         DataSource source;
         InitialContext ic;
 
         try {
-            if (conn == null || conn.isClosed()) {
-                ic = new InitialContext();
-                source = (DataSource) ic.lookup("java:comp/env/jdbc/postgresql_resource");
-                DBConnection.conn = source.getConnection();
-            }
+            ic = new InitialContext();
+            source = (DataSource) ic.lookup("java:comp/env/jdbc/postgresql_resource");
+            this.conn = source.getConnection();
         }
         catch (NamingException | SQLException e ) {
             e.printStackTrace();
         }
-
-        return DBConnection.conn;
+        return this.conn;
     }
 
+    public void closeConnection() {
+        try {
+            this.conn.close();
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+    }
 }

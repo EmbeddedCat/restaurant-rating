@@ -41,11 +41,12 @@ public abstract class User {
     public void getCredentials(String username) throws SQLException {
         HashMap<String, String> dbCredentials;
         QueryManager queryManager = new QueryManager();
+        DBConnection dbConnection = new DBConnection();
 
         dbCredentials = queryManager.getFromDatabase(
                 username,
                 Queries.RETRIEVE_DETAILS.getQuery(),
-                DBConnection.getConnection(),
+                dbConnection.getConnection(),
                 "rest_user",
                 "username",
                 "password",
@@ -57,6 +58,7 @@ public abstract class User {
         this.password = dbCredentials.get("password");
         this.mail     = dbCredentials.get("email");
         this.address  = dbCredentials.get("address");
+        dbConnection.closeConnection();
     }
 
     // This method is responsible for user LoginServlet.
