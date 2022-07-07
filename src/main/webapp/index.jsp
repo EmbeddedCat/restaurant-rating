@@ -5,6 +5,7 @@
         <title>Restaurant Rating</title>
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <link rel="stylesheet" href="./css/index.css">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     </head>
     <body>
             <!-- Header -->
@@ -34,13 +35,97 @@
                     <div id="search_rest_text">
                         Restaurant name
                     </div><br><br>
-                    <div id="search_rest">
-                        <input type="text" placeholder="Restaurant name"><br>
-                        <input type="submit" value="Search">
+                    <div>
+                        <input class="search_input" type="text" placeholder="Restaurant name"><br>
+                        <input class="search_button" type="submit" value="Search">
                     </div>
                 </form>
-            </div>
+            </div><br><br><br><br>
+            <br><br><br><br>
+            <br><br><br><br>
 
             <!-- TODO show 5 restaurants -->
+            <!-- one restaurant -->
+            <div class="restaurants_align">
+                <table class="restaurants_temp">
+                    <tr>
+                        <th>
+                            <img src="images/noimage.jpeg" alt="no image">
+                        </th>
+                    </tr>
+                    <tr>
+                        <td> owner </td>
+                    </tr>
+                    <tr>
+                        <td> name </td>
+                    </tr>
+                    <tr>
+                        <td> address </td>
+                    </tr>
+                    <tr>
+                        <td> phone </td>
+                    </tr>
+                    <tr>
+                        <th>
+                            <span class="fa fa-star checked star1" onclick="test()" ></span>
+                            <span class="fa fa-star checked star1.2" onclick="test()" style="display: none" ></span>
+                            <span class="fa fa-star checked star2"></span>
+                            <span class="fa fa-star checked star2.2" onclick="test()" style="display: none"></span>
+                            <span class="fa fa-star checked star3"></span>
+                            <span class="fa fa-star checked star3.2" onclick="test()" style="display: none"></span>
+                            <span class="fa fa-star star4"></span>
+                            <span class="fa fa-star checked star4.2" onclick="test()" style="display: none" ></span>
+                            <span class="fa fa-star star5"></span>
+                            <span class="fa fa-star checked star5.2" onclick="test()" style="display: none"></span>
+                            <br><br>
+                            <form>
+                                <input class="star_number" type="number" style="display: none">
+                                <input class="star_submit" type="submit" value="Submit">
+                            </form>
+                        </th>
+                    </tr>
+                </table>
+            </div>
+
+            <div class="restaurants_align">
+                <table class="restaurants_temp">
+                    <tr>
+                        <th>
+                            <img src="images/noimage.jpeg" alt="no image">
+                        </th>
+                    </tr>
+                    <tr>
+                        <td> owner </td>
+                    </tr>
+                    <tr>
+                        <td> name </td>
+                    </tr>
+                    <tr>
+                        <td> address </td>
+                    </tr>
+                    <tr>
+                        <td> phone </td>
+                    </tr>
+                    <tr>
+                        <th>
+                            <span class="fa fa-star checked star1" onclick="test()" ></span>
+                            <span class="fa fa-star checked star1.2" onclick="test()" style="display: none" ></span>
+                            <span class="fa fa-star checked star2"></span>
+                            <span class="fa fa-star checked star2.2" onclick="test()" style="display: none"></span>
+                            <span class="fa fa-star checked star3"></span>
+                            <span class="fa fa-star checked star3.2" onclick="test()" style="display: none"></span>
+                            <span class="fa fa-star star4"></span>
+                            <span class="fa fa-star checked star4.2" onclick="test()" style="display: none" ></span>
+                            <span class="fa fa-star star5"></span>
+                            <span class="fa fa-star checked star5.2" onclick="test()" style="display: none"></span>
+                            <br><br>
+                            <form>
+                                <input class="star_number" type="number" style="display: none">
+                                <input class="star_submit" type="submit" value="Submit">
+                            </form>
+                        </th>
+                    </tr>
+                </table>
+            </div>
     </body>
 </html>

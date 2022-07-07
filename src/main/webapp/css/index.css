@@ -72,20 +72,75 @@ body, html {
     font-size: 30px;
 }
 
-input {
+.search_input {
     position: relative;
     border: none;
     border-bottom: 1px solid gray;
     margin-top: 20px;
     margin-bottom: 10px;
     width: 20%;
-    left: 39%;
+    left: 40.5%;
     height: 50px;
     font-size: 130%;
     color: black;
 }
 
+.search_button {
+    width: 10%;
+    position: absolute;
+    left: 45.5%;
+    height: 50px;
+    font-size: 130%;
+    border-radius: 14px;
+    background-color: #333;
+    color: white;
+}
+
 #search_rest {
     margin-left: 8%;
     margin-right: 5%;
+}
+
+img {
+    height: 160px;
+    width: 160px;
+}
+
+.restaurants_temp td, .restaurants_temp th {
+    border: 1px solid black;
+    padding: 3px;
+}
+
+.restaurants_temp tr:nth-child(even){background-color: #f2f2f2;}
+
+.restaurants_temp tr:hover {background-color: #ddd;}
+
+.restaurants_temp th {
+    position: relative;
+    padding-top: 3px;
+    padding-bottom: 3px;
+    margin: 10%;
+    text-align: left;
+    background-color: #04AA6D;
+    color: white;
+}
+
+.restaurants_align {
+    display:inline-block;
+    margin-left: 80px;
+}
+
+.checked {
+    color: orange;
+    cursor: pointer;
+}
+
+.star_submit {
+    width: 100%;
+    position: relative;
+    height: 30px;
+    font-size: 80%;
+    border-radius: 14px;
+    background-color: #333;
+    color: white;
 }

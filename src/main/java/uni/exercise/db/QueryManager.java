@@ -1,7 +1,5 @@
 package uni.exercise.db;
 
-
-import javax.xml.transform.Result;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -64,7 +62,7 @@ public class QueryManager {
 
         ArrayList<HashMap<String, String>> records = new ArrayList<>();
         ArrayList<String> parameters = (ArrayList<String>) Arrays.asList(params);
-        HashMap<String, String> tmp = null;
+        HashMap<String, String> tmp;
         ResultSet columns = (ResultSet) QueryManager.queryExecutor(MessageFormat.format(query, table), conn, false, params);
 
         int curr_col = 0;
