@@ -41,11 +41,11 @@ public class QueryManager {
         return retrievedData;
     }
 
-    public static HashMap<String, String> getFromDatabase(String selector,
-                                                          String query,
-                                                          Connection conn,
-                                                          String table,
-                                                          String... retrieves) throws SQLException {
+    public HashMap<String, String> getFromDatabase(String selector,
+                                                   String query,
+                                                   Connection conn,
+                                                   String table,
+                                                   String... retrieves) throws SQLException {
 
         if (conn == null) throw new SQLException("Failed to establish connection");
         ResultSet resultsFromDB;
@@ -54,10 +54,10 @@ public class QueryManager {
     }
 
     // gets more than one column
-    public static ArrayList<HashMap<String, String>> getMultipleColDB(String query,
-                                                                      Connection conn,
-                                                                      String table,
-                                                                      String... params) throws SQLException {
+    public ArrayList<HashMap<String, String>> getMultipleColDB(String query,
+                                                               Connection conn,
+                                                               String table,
+                                                               String... params) throws SQLException {
         if (conn == null) throw new SQLException("Failed to establish connection");
 
         ArrayList<HashMap<String, String>> records = new ArrayList<>();
@@ -78,10 +78,10 @@ public class QueryManager {
         return records;
     }
 
-    public static void saveToDatabase(String query,
-                                      Connection conn,
-                                      String table,
-                                      String... fields) throws SQLException {
+    public void saveToDatabase(String query,
+                               Connection conn,
+                               String table,
+                               String... fields) throws SQLException {
         if (conn == null) throw new SQLException("Failed to establish connection");
         QueryManager.queryExecutor(MessageFormat.format(query, table), conn, true, fields);
     }

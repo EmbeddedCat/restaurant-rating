@@ -6,7 +6,7 @@ import java.security.NoSuchAlgorithmException;
 
 public class SecurityManager {
 
-    public static String getHash(String message) throws NoSuchAlgorithmException {
+    public String getHash(String message) throws NoSuchAlgorithmException {
         MessageDigest algorithm = MessageDigest.getInstance("MD5");
         byte[] messageDigest = algorithm.digest(message.getBytes());
         BigInteger bigInteger = new BigInteger(1, messageDigest);
