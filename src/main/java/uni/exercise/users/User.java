@@ -40,8 +40,9 @@ public abstract class User {
 
     public void getCredentials(String username) throws SQLException {
         HashMap<String, String> dbCredentials;
+        QueryManager queryManager = new QueryManager();
 
-        dbCredentials = QueryManager.getFromDatabase(
+        dbCredentials = queryManager.getFromDatabase(
                 username,
                 Queries.RETRIEVE_DETAILS.getQuery(),
                 DBConnection.getConnection(),
