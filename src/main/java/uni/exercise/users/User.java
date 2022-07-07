@@ -3,7 +3,6 @@ package uni.exercise.users;
 import uni.exercise.db.DBConnection;
 import uni.exercise.db.Queries;
 import uni.exercise.db.QueryManager;
-import uni.exercise.users.user_exceptions.FailedToLogin;
 import uni.exercise.users.user_exceptions.UserNotFound;
 
 import javax.servlet.http.HttpSession;
@@ -60,9 +59,10 @@ public abstract class User {
     }
 
     // This method is responsible for user LoginServlet.
-    abstract public void login(String username, String pass) throws FailedToLogin,
-                                                                    UserNotFound;
+    abstract public void login(String username, String pass) throws UserNotFound;
 
     // This method is responsible for user logout.
-    abstract public void logout(HttpSession session);
+    public static void logout(HttpSession session) {
+        session.invalidate();
+    }
 }

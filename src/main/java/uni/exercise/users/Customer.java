@@ -1,35 +1,31 @@
 package uni.exercise.users;
 
-import uni.exercise.db.DBConnection;
-import uni.exercise.db.Queries;
-import uni.exercise.db.QueryManager;
-import uni.exercise.users.user_exceptions.FailedToLogin;
+import uni.exercise.security.SecurityManager;
 import uni.exercise.users.user_exceptions.UserNotFound;
 
 import javax.servlet.http.HttpSession;
+import java.security.NoSuchAlgorithmException;
 import java.sql.SQLException;
-import java.util.HashMap;
 
 public class Customer extends User {
 
 
     @Override
-    public void login(String username, String pass) throws UserNotFound,
-                                                           FailedToLogin {
+    public void login(String username, String pass) throws UserNotFound {
         try {
             this.getCredentials(username);
         } catch (SQLException e) {
             throw new RuntimeException(e);
         }
-        String hashedPassword = this.password; // TODO - make it secure.
+        String hashedPassword = null;
+        try {
+            hashedPassword = SecurityManager.getHash(this.password);
+        } catch (NoSuchAlgorithmException e) {
+            throw new RuntimeException(e);
+        }
 
         if (!(username.equals(this.username) && hashedPassword.equals(this.password))) {
             throw new UserNotFound("Login Failed...");
         }
-    }
-
-    @Override
-    public void logout(HttpSession session) {
-        session.invalidate();
     }
 }
