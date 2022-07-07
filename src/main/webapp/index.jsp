@@ -86,46 +86,5 @@
                     </tr>
                 </table>
             </div>
-
-            <div class="restaurants_align">
-                <table class="restaurants_temp">
-                    <tr>
-                        <th>
-                            <img src="images/noimage.jpeg" alt="no image">
-                        </th>
-                    </tr>
-                    <tr>
-                        <td> owner </td>
-                    </tr>
-                    <tr>
-                        <td> name </td>
-                    </tr>
-                    <tr>
-                        <td> address </td>
-                    </tr>
-                    <tr>
-                        <td> phone </td>
-                    </tr>
-                    <tr>
-                        <th>
-                            <span class="fa fa-star checked star1" onclick="test()" ></span>
-                            <span class="fa fa-star checked star1.2" onclick="test()" style="display: none" ></span>
-                            <span class="fa fa-star checked star2"></span>
-                            <span class="fa fa-star checked star2.2" onclick="test()" style="display: none"></span>
-                            <span class="fa fa-star checked star3"></span>
-                            <span class="fa fa-star checked star3.2" onclick="test()" style="display: none"></span>
-                            <span class="fa fa-star star4"></span>
-                            <span class="fa fa-star checked star4.2" onclick="test()" style="display: none" ></span>
-                            <span class="fa fa-star star5"></span>
-                            <span class="fa fa-star checked star5.2" onclick="test()" style="display: none"></span>
-                            <br><br>
-                            <form>
-                                <input class="star_number" type="number" style="display: none">
-                                <input class="star_submit" type="submit" value="Submit">
-                            </form>
-                        </th>
-                    </tr>
-                </table>
-            </div>
     </body>
 </html>
