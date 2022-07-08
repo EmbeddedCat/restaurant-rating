@@ -78,6 +78,15 @@ public class QueryManager {
         return records;
     }
 
+    public void removeFromDB(String selector,
+                             String query,
+                             Connection conn,
+                             String table) throws SQLException {
+        if (conn == null) throw new SQLException("Failed to establish connection");
+
+        QueryManager.queryExecutor(MessageFormat.format(query, table), conn,false, selector);
+    }
+
     public void saveToDatabase(String query,
                                Connection conn,
                                String table,
