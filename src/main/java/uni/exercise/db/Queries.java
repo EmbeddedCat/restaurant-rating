@@ -2,7 +2,7 @@ package uni.exercise.db;
 
 public enum Queries {
 
-    ADD_USER("INSERT INTO {0} (username, password, address, gmail) VALUES(?, ?, ?, ?)"),
+    ADD_USER("INSERT INTO {0} (username, password, address, email) VALUES(?, ?, ?, ?)"),
     RETRIEVE_DETAILS("SELECT * FROM {0} WHERE username = ?");
 
 
