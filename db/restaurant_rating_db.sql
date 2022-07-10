@@ -11,9 +11,6 @@ CREATE TABLE restaurant
 (
     restaurant_owner       varchar(50) not null,
     restaurant_name        varchar(50) unique not null,
-    restaurant_mo_stars    int,
-    restaurant_sum_stars   int,
-    restaurant_count_stars int,
     restaurant_address     varchar(80) not null,
     restaurant_phone       varchar(12) unique not null,
     restaurant_pic         varchar(500),

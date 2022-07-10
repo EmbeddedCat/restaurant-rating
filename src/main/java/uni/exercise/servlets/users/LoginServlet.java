@@ -34,7 +34,7 @@ public class LoginServlet extends HttpServlet {
             request.getSession().setAttribute("address", customer.getAddress());
         }
         catch (UserNotFound e) {
-            response.sendRedirect(request.getContextPath()+"status/failed_page");
+            response.sendRedirect(request.getContextPath()+"status/failed_page.jsp");
         }
         
     }
