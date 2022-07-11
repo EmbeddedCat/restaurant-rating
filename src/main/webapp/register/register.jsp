@@ -48,7 +48,7 @@
             <div class="input_texts">
                 <b>Email</b>
             </div>
-            <input type="email" id="register_email" name="gmail" placeholder="example@exp.com"><br>
+            <input type="email" id="register_email" name="email" placeholder="example@exp.com"><br>
             <div class="input_texts">
                 <b>Address</b>
             </div>

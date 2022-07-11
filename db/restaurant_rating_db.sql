@@ -22,9 +22,9 @@ CREATE TABLE stared
 (
     username           varchar(50) not null,
     restaurant_address varchar(80) not null,
-    primary key(username, restaurant),
+    primary key(username, restaurant_address),
     foreign key(username) references rest_user,
-    foreign key(restaurant) references restaurant
+    foreign key(restaurant_address) references restaurant
 );
 
 CREATE TABLE app_admin 

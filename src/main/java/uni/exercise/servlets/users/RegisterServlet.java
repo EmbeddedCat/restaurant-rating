@@ -3,6 +3,7 @@ package uni.exercise.servlets.users;
 import uni.exercise.db.DBConnection;
 import uni.exercise.db.Queries;
 import uni.exercise.db.QueryManager;
+import uni.exercise.security.SecurityManager;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -10,6 +11,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
+import java.security.NoSuchAlgorithmException;
 import java.sql.SQLException;
 
 
@@ -26,6 +28,14 @@ public class RegisterServlet extends HttpServlet {
                        HttpServletResponse response) throws ServletException, IOException {
         QueryManager queryManager = new QueryManager();
         DBConnection dbConnection = new DBConnection();
+        SecurityManager securityManager = new SecurityManager();
+
+        String enctypted_pass;
+        try {
+             enctypted_pass = securityManager.getHash(request.getParameter("password"));
+        } catch (NoSuchAlgorithmException e) {
+            throw new RuntimeException(e);
+        }
 
         try {
             queryManager.saveToDatabase(
@@ -33,13 +43,13 @@ public class RegisterServlet extends HttpServlet {
                                 dbConnection.getConnection(),
                                 "rest_user",
                                 request.getParameter("username"),
-                                request.getParameter("password"),
+                                enctypted_pass,
                                 request.getParameter("address"),
-                                request.getParameter("gmail")
+                                request.getParameter("email")
                                );
-            response.sendRedirect(request.getContextPath()+"status/success_page");
+            response.sendRedirect(request.getContextPath()+"/status/success_page.jsp");
         } catch (SQLException e) {
-            response.sendRedirect(request.getContextPath()+"status/failed_page");
+            response.sendRedirect(request.getContextPath()+"/status/failed_page.jsp");
         }
     }
 }
