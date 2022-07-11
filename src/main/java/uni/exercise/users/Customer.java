@@ -21,7 +21,7 @@ public class Customer extends User {
         }
         String hashedPassword = null;
         try {
-            hashedPassword = securityManager.getHash(this.password);
+            hashedPassword = securityManager.getHash(pass);
         } catch (NoSuchAlgorithmException e) {
             throw new RuntimeException(e);
         }

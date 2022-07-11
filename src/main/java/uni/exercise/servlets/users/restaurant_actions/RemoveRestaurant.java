@@ -38,7 +38,7 @@ public class RemoveRestaurant extends HttpServlet {
             );
             // TODO - tests.
         } catch (SQLException e) {
-            response.sendRedirect(request.getContextPath()+"status/failed_page.jsp");
+            response.sendRedirect(request.getContextPath()+"/status/failed_page.jsp");
         }
 
     }

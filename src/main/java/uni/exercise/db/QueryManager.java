@@ -18,12 +18,15 @@ public class QueryManager {
         int index;
 
         PreparedStatement preparedStatement = conn.prepareStatement(query);
-        List<String> userInput = Arrays.asList(parameters);
+        if (parameters != null) {
+            List<String> userInput = Arrays.asList(parameters);
 
-        for (String input : userInput) {
-            index = userInput.indexOf(input) + 1;
-            preparedStatement.setString(index, (String) input);
+            for (String input : userInput) {
+                index = userInput.indexOf(input) + 1;
+                preparedStatement.setString(index, (String) input);
+            }
         }
+
         return (isWrite)? preparedStatement.executeUpdate() : preparedStatement.executeQuery();
     }
 
@@ -61,18 +64,20 @@ public class QueryManager {
         if (conn == null) throw new SQLException("Failed to establish connection");
 
         ArrayList<HashMap<String, String>> records = new ArrayList<>();
-        ArrayList<String> parameters = (ArrayList<String>) Arrays.asList(params);
+        List<String> parameters = Arrays.asList(params);
         HashMap<String, String> tmp;
-        ResultSet columns = (ResultSet) QueryManager.queryExecutor(MessageFormat.format(query, table), conn, false, params);
+        ResultSet columns = (ResultSet) QueryManager.queryExecutor(MessageFormat.format(query, table), conn, false, null);
 
         int curr_col = 0;
         // while there are results make the appropriate number of hashmaps and store each record..
         while (columns.next()) {
             tmp = new HashMap<>();
-            for (String p : parameters
-                 ) {
-                tmp.put(p, columns.getString(p));
+
+            for (String parameter :
+                    parameters) {
+                tmp.put(parameter, columns.getString(parameter));
             }
+
             records.add(tmp);
         }
         return records;

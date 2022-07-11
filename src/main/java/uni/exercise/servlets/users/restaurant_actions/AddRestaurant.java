@@ -44,7 +44,7 @@ public class AddRestaurant extends HttpServlet {
             );
             // TODO - test.
         } catch (SQLException e) {
-            response.sendRedirect(request.getContextPath()+"status/failed_page.jsp");
+            response.sendRedirect(request.getContextPath()+"/status/failed_page.jsp");
         }
     }
 }

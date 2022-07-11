@@ -58,7 +58,7 @@ public class Search extends HttpServlet {
             request.getSession().setAttribute("rest_stars", rest_stars.get("stars"));
             // TODO - tests.
         } catch (SQLException e) {
-            response.sendRedirect(request.getContextPath()+"status/failed_page.jsp");
+            response.sendRedirect(request.getContextPath()+"/status/failed_page.jsp");
         }
     }
 }
