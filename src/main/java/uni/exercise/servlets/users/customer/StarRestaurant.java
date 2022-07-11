@@ -5,12 +5,14 @@ import uni.exercise.db.Queries;
 import uni.exercise.db.QueryManager;
 
 import javax.servlet.ServletException;
+import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.sql.SQLException;
 
+@WebServlet("/StarRestaurant")
 public class StarRestaurant extends HttpServlet {
     @Override
     public void init() {
@@ -23,8 +25,10 @@ public class StarRestaurant extends HttpServlet {
 
         QueryManager queryManager = new QueryManager();
         DBConnection dbConnection = new DBConnection();
-        String username = request.getParameter("username");
-        String restaurant = request.getParameter("restaurant");
+        String username = (String) request.getSession().getAttribute("username");
+        String restaurant_addr = request.getParameter("restaurant_addr");
+
+        if (username == null) response.sendRedirect(request.getContextPath()+"/login/login.jsp");
 
         try {
             queryManager.saveToDatabase(
@@ -32,9 +36,10 @@ public class StarRestaurant extends HttpServlet {
                     dbConnection.getConnection(),
                     "stared",
                     username,
-                    restaurant
+                    restaurant_addr
             );
-            // TODO - test.
+            dbConnection.closeConnection();
+            response.sendRedirect(request.getContextPath()+"/status/success_page.jsp");
         } catch (SQLException e) {
             response.sendRedirect(request.getContextPath()+"/status/failed_page.jsp");
         }
