@@ -99,7 +99,8 @@
                                     "                    </tr>\n" +
                                     "                    <tr>\n" +
                                     "                        <th>\n" +
-                                    "                            <form>\n" +
+                                    "                            <form action=\""+request.getContextPath()+"/StarRestaurant\" method=\"post\">\n" +
+                                    "                                <input type=text name=\"restaurant_addr\" value=\""+restaurants.get(i).get("restaurant_address")+"\" style=\"Display: none;\">" +
                                     "                                <input class=\"star_submit\" type=\"submit\" value=\"You like it;\">\n" +
                                     "                            </form>\n" +
                                     "                        </th>\n" +
@@ -111,7 +112,6 @@
 
                 response.getWriter().println("</body>" +
                         "</html>");
-                dbConnection.closeConnection();
             %>
 
 

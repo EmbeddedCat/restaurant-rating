@@ -5,6 +5,7 @@ import uni.exercise.db.Queries;
 import uni.exercise.db.QueryManager;
 
 import javax.servlet.ServletException;
+import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -12,6 +13,7 @@ import java.io.IOException;
 import java.sql.SQLException;
 import java.util.HashMap;
 
+@WebServlet("/Search")
 public class Search extends HttpServlet {
     @Override
     public void init() {
@@ -56,6 +58,9 @@ public class Search extends HttpServlet {
             request.getSession().setAttribute("rest_pic", rest_infos.get("restaurant_pic"));
             // Get stars.
             request.getSession().setAttribute("rest_stars", rest_stars.get("stars"));
+
+            dbConnection.closeConnection();
+            // TODO - redirect to restaurant page.
             // TODO - tests.
         } catch (SQLException e) {
             response.sendRedirect(request.getContextPath()+"/status/failed_page.jsp");

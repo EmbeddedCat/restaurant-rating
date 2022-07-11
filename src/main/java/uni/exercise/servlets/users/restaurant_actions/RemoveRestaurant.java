@@ -5,12 +5,14 @@ import uni.exercise.db.Queries;
 import uni.exercise.db.QueryManager;
 
 import javax.servlet.ServletException;
+import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.sql.SQLException;
 
+@WebServlet("/RemoveRestaurant")
 public class RemoveRestaurant extends HttpServlet {
     @Override
     public void init() {
@@ -36,6 +38,7 @@ public class RemoveRestaurant extends HttpServlet {
                     dbConnection.getConnection(),
                     "restaurant"
             );
+            dbConnection.closeConnection();
             // TODO - tests.
         } catch (SQLException e) {
             response.sendRedirect(request.getContextPath()+"/status/failed_page.jsp");
