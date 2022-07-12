@@ -1,9 +1,9 @@
 function verify_register()
 {
-    let username = document.getElementById("register_username").value;
-    let password = document.getElementById("register_password").value;
+    let username   = document.getElementById("register_username").value;
+    let password   = document.getElementById("register_password").value;
     let password_v = document.getElementById("register_password_v").value;
-    let email = document.getElementById("register_email").value;
+    let email      = document.getElementById("register_email").value;
 
     // check if anything is empty.
     if (username === '' || password === '' || password_v === ''

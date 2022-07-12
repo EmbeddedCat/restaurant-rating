@@ -25,7 +25,20 @@ a {
     text-decoration:none
 }
 
-input {
+input[type=password] {
+    position: relative;
+    border: none;
+    border-bottom: 1px solid gray;
+    margin-top: 20px;
+    margin-bottom: 10px;
+    width: 20%;
+    left: 39%;
+    height: 50px;
+    font-size: 130%;
+    color: black;
+}
+
+input[type=text] {
     position: relative;
     border: none;
     border-bottom: 1px solid gray;

@@ -26,7 +26,7 @@ public class AddRestaurant extends HttpServlet {
         DBConnection dbConnection = new DBConnection();
 
         // Get restaurant infos.
-        String owner = request.getParameter("rest_owner");
+        String owner = (String) request.getSession().getAttribute("username");
         String name  = request.getParameter("rest_name");
         String addr  = request.getParameter("rest_addr");
         String phone = request.getParameter("rest_phone");
@@ -45,7 +45,7 @@ public class AddRestaurant extends HttpServlet {
                     pic
             );
             dbConnection.closeConnection();
-            // TODO - test.
+            response.sendRedirect(request.getContextPath()+"/status/success_page.jsp");
         } catch (SQLException e) {
             response.sendRedirect(request.getContextPath()+"/status/failed_page.jsp");
         }

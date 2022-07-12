@@ -16,7 +16,6 @@
                         "    <title>Restaurant Rating</title>\n" +
                         "    <meta name=\"viewport\" content=\"width=device-width, initial-scale=1\">\n" +
                         "    <link rel=\"stylesheet\" href=\"./css/index.css\">\n" +
-                        "    <link rel=\"stylesheet\" href=\"https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css\">\n" +
                         "</head>\n" +
                         "<body>\n" +
                         "<!-- Header -->\n" +
@@ -42,12 +41,12 @@
                         "<br><br><br>\n" +
                         "\n" +
                         "<div>\n" +
-                        "    <form>\n" +
+                        "    <form action="+request.getContextPath()+"/Search method=\"post\">\n" +
                         "        <div id=\"search_rest_text\">\n" +
                         "            Restaurant name\n" +
                         "        </div><br><br>\n" +
                         "        <div>\n" +
-                        "            <input class=\"search_input\" type=\"text\" placeholder=\"Restaurant name\"><br>\n" +
+                        "            <input class=\"search_input\" name=\"rest_name\" type=\"text\" placeholder=\"Restaurant name\"><br>\n" +
                         "            <input class=\"search_button\" type=\"submit\" value=\"Search\">\n" +
                         "        </div>\n" +
                         "    </form>\n" +
@@ -59,6 +58,7 @@
                 DBConnection dbConnection = new DBConnection();
 
                 ArrayList<HashMap<String, String>> restaurants = null;
+                HashMap<String, String> rest_stars;
 
                 try {
                     restaurants = queryManager.getMultipleColDB(
@@ -71,12 +71,14 @@
                             "restaurant_phone",
                             "restaurant_pic"
                     );
+
                 } catch (SQLException e) {
                     response.sendRedirect(request.getContextPath()+"/status/failed_page.jsp");
+                    return;
                 }
 
                 if (restaurants != null && !restaurants.isEmpty()) {
-                        for (int i = 0; i < 5; i++) {
+                        for (int i = 0; i < 7; i++) {
                             response.getWriter().println("" +
                                     "            <div class=\"restaurants_align\">\n" +
                                     "                <table class=\"restaurants_temp\">\n" +
@@ -113,48 +115,3 @@
                 response.getWriter().println("</body>" +
                         "</html>");
             %>
-
-
-            <!-- TODO show 5 restaurants -->
-            <!-- one restaurant
-            <div class="restaurants_align">
-                <table class="restaurants_temp">
-                    <tr>
-                        <th>
-                            <img src="images/noimage.jpeg" alt="no image">
-                        </th>
-                    </tr>
-                    <tr>
-                        <td> owner </td>
-                    </tr>
-                    <tr>
-                        <td> name </td>
-                    </tr>
-                    <tr>
-                        <td> address </td>
-                    </tr>
-                    <tr>
-                        <td> phone </td>
-                    </tr>
-                    <tr>
-                        <th>
-                            <span class="fa fa-star checked star1" onclick="test()" ></span>
-                            <span class="fa fa-star checked star1.2" onclick="test()" style="display: none" ></span>
-                            <span class="fa fa-star checked star2"></span>
-                            <span class="fa fa-star checked star2.2" onclick="test()" style="display: none"></span>
-                            <span class="fa fa-star checked star3"></span>
-                            <span class="fa fa-star checked star3.2" onclick="test()" style="display: none"></span>
-                            <span class="fa fa-star star4"></span>
-                            <span class="fa fa-star checked star4.2" onclick="test()" style="display: none" ></span>
-                            <span class="fa fa-star star5"></span>
-                            <span class="fa fa-star checked star5.2" onclick="test()" style="display: none"></span>
-                            <br><br>
-                            <form>
-                                <input class="star_number" type="number" style="display: none">
-                                <input class="star_submit" type="submit" value="Submit">
-                            </form>
-                        </th>
-                    </tr>
-                </table>
-            </div>
-             -->
