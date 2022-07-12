@@ -6,7 +6,7 @@
     <link rel="stylesheet" href="../../css/user.css">
     <link rel="stylesheet" href="../../css/login_register.css">
     <link rel="stylesheet" href="../../css/index.css">
-    <script src="../../js/verity_new_restaurant.js"></script>
+    <script src="../../js/admin.js"></script>
 </head>
 <body>
 
@@ -84,7 +84,7 @@
         <input type="submit" class="register_btn" value="Add">
     </form><br><br><br><br><br>
 
-    <form action="../../RemoveUser" method="post" onsubmit="verify_add_rest()">
+    <form action="../../RemoveUser" method="post" onsubmit="check_filed_del_usr()">
         <div class="input_texts">
             <b>( Remove User )</b>
         </div>
@@ -98,7 +98,7 @@
         <input type="submit" class="register_btn" value="Remove">
     </form><br><br><br><br><br>
 
-    <form action="../../RemoveRestaurant" method="post" onsubmit="verify_add_rest()">
+    <form action="../../RemoveRestaurant" method="post" onsubmit="check_filed_del_rest()">
         <div class="input_texts">
             <b>( Remove Restaurant )</b>
         </div>
@@ -107,7 +107,7 @@
         <div class="input_texts">
             <b>Restaurant address</b>
         </div>
-        <input type="text" id="rest_to_remove" name="restaurant" placeholder="restaurant to remove"><br>
+        <input type="text" id="rest_to_remove" name="rest_addr" placeholder="restaurant to remove"><br>
 
         <input type="submit" class="register_btn" value="Remove">
     </form>

@@ -34,7 +34,7 @@ public class RemoveUser extends HttpServlet {
                     dbConnection.getConnection(),
                     "rest_user"
             );
-            // TODO - tests.
+            response.sendRedirect(request.getContextPath()+"/status/success_page.jsp");
         } catch (SQLException e) {
             response.sendRedirect(request.getContextPath()+"/status/failed_page.jsp");
         }

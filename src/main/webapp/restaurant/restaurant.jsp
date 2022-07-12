@@ -1,10 +1,3 @@
-<%@ page import="uni.exercise.db.QueryManager" %>
-<%@ page import="uni.exercise.db.DBConnection" %>
-<%@ page import="java.util.HashMap" %>
-<%@ page import="java.util.ArrayList" %>
-<%@ page import="uni.exercise.db.Queries" %>
-<%@ page import="java.sql.SQLException" %>
-
 <%@ page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
 
 <%
@@ -72,7 +65,7 @@
                          <tr>
                             <th>
                                 <form action="../StarRestaurant" method="post">
-                                     <input type=text name="restaurant_addr" value="" style="Display: none;">
+                                     <input type=text name="restaurant_addr" value="<%=addr%>" style="Display: none;">
                                      <input class="star_submit" type="submit" value="You like it;">
                                 </form>
                             </th>
