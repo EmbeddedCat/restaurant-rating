@@ -28,6 +28,7 @@ public class StarRestaurant extends HttpServlet {
         String username = (String) request.getSession().getAttribute("username");
         String restaurant_addr = request.getParameter("restaurant_addr");
 
+
         if (username == null) {
             response.sendRedirect(request.getContextPath()+"/login/login.jsp");
             return;
@@ -44,6 +45,7 @@ public class StarRestaurant extends HttpServlet {
             dbConnection.closeConnection();
             response.sendRedirect(request.getContextPath()+"/status/success_page.jsp");
         } catch (SQLException e) {
+            e.printStackTrace();
             response.sendRedirect(request.getContextPath()+"/status/failed_page.jsp");
         }
 

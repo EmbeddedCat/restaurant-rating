@@ -90,7 +90,7 @@ public class QueryManager {
                              String table) throws SQLException {
         if (conn == null) throw new SQLException("Failed to establish connection");
 
-        QueryManager.queryExecutor(MessageFormat.format(query, table), conn,false, selector);
+        QueryManager.queryExecutor(MessageFormat.format(query, table), conn,true, selector);
     }
 
     public void saveToDatabase(String query,
