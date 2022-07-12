@@ -8,6 +8,9 @@
     <script src="../js/verify_inputs.js"></script>
 </head>
 <body>
+
+
+
     <!-- Header -->
     <div class="hero-image">
         <div class="topnav">

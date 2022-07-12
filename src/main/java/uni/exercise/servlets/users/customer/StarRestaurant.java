@@ -28,7 +28,10 @@ public class StarRestaurant extends HttpServlet {
         String username = (String) request.getSession().getAttribute("username");
         String restaurant_addr = request.getParameter("restaurant_addr");
 
-        if (username == null) response.sendRedirect(request.getContextPath()+"/login/login.jsp");
+        if (username == null) {
+            response.sendRedirect(request.getContextPath()+"/login/login.jsp");
+            return;
+        }
 
         try {
             queryManager.saveToDatabase(

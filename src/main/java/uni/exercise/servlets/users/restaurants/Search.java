@@ -36,19 +36,24 @@ public class Search extends HttpServlet {
         HashMap<String, String> rest_stars;
 
         try {
-            // remove restaurant.
             rest_infos = queryManager.getFromDatabase(
                     name,
                     Queries.SEARCH_REST.getQuery(),
                     dbConnection.getConnection(),
-                    "restaurant"
+                    "restaurant",
+                    "restaurant_owner",
+                    "restaurant_name",
+                    "restaurant_address",
+                    "restaurant_phone",
+                    "restaurant_pic"
             );
 
             rest_stars = queryManager.getFromDatabase(
-                    name,
+                    rest_infos.get("restaurant_address"),
                     Queries.GET_STARS.getQuery(),
                     dbConnection.getConnection(),
-                    "stared"
+                    "stared",
+                    "stars"
             );
 
             request.getSession().setAttribute("rest_owner", rest_infos.get("restaurant_owner"));
@@ -60,9 +65,9 @@ public class Search extends HttpServlet {
             request.getSession().setAttribute("rest_stars", rest_stars.get("stars"));
 
             dbConnection.closeConnection();
-            // TODO - redirect to restaurant page.
-            // TODO - tests.
+            response.sendRedirect(request.getContextPath()+"/restaurant/restaurant.jsp");
         } catch (SQLException e) {
+            e.printStackTrace();
             response.sendRedirect(request.getContextPath()+"/status/failed_page.jsp");
         }
     }
