@@ -26,7 +26,7 @@ public class LoginServlet extends HttpServlet {
     public void doPost(HttpServletRequest request,
                        HttpServletResponse response) throws ServletException, IOException {
 
-        Customer customer = new Customer();
+        Customer customer         = new Customer();
         QueryManager queryManager = new QueryManager();
         DBConnection dbConnection = new DBConnection();
 

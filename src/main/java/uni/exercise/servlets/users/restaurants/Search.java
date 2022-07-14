@@ -67,7 +67,6 @@ public class Search extends HttpServlet {
             dbConnection.closeConnection();
             response.sendRedirect(request.getContextPath()+"/restaurant/restaurant.jsp");
         } catch (SQLException e) {
-            e.printStackTrace();
             response.sendRedirect(request.getContextPath()+"/status/failed_page.jsp");
         }
     }
