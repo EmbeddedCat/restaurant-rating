@@ -26,8 +26,8 @@ public class RegisterServlet extends HttpServlet {
     @Override
     public void doPost(HttpServletRequest request,
                        HttpServletResponse response) throws ServletException, IOException {
-        QueryManager queryManager = new QueryManager();
-        DBConnection dbConnection = new DBConnection();
+        QueryManager queryManager       = new QueryManager();
+        DBConnection dbConnection       = new DBConnection();
         SecurityManager securityManager = new SecurityManager();
 
         String enctypted_pass;
