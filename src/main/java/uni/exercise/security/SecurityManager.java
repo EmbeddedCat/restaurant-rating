@@ -1,21 +1,25 @@
 package uni.exercise.security;
 
 import java.math.BigInteger;
+import java.nio.charset.StandardCharsets;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
 
 public class SecurityManager {
 
-    public String getHash(String message) throws NoSuchAlgorithmException {
-        MessageDigest algorithm = MessageDigest.getInstance("MD5");
-        byte[] messageDigest = algorithm.digest(message.getBytes());
-        BigInteger bigInteger = new BigInteger(1, messageDigest);
+    public static String toHexString(byte[] hash) {
+        BigInteger number = new BigInteger(1, hash);
+        StringBuilder hexString = new StringBuilder(number.toString(16));
 
-        StringBuilder hash = new StringBuilder(bigInteger.toString(16));
-
-        while (hash.length() < 32) {
-            hash.insert(0, "0");
+        while (hexString.length() < 64) {
+            hexString.insert(0, '0');
         }
-        return hash.toString();
+
+        return hexString.toString();
+    }
+
+    public static String getHash(String message) throws NoSuchAlgorithmException {
+        MessageDigest md = MessageDigest.getInstance("SHA-256");
+        return toHexString(md.digest(message.getBytes(StandardCharsets.UTF_8)));
     }
 }

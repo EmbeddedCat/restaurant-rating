@@ -12,6 +12,7 @@ import java.util.HashMap;
 public abstract class User {
     protected String username;
     protected String password;
+    protected String salt;
     protected String address;
     protected String mail;
 
@@ -50,12 +51,14 @@ public abstract class User {
                 "rest_user",
                 "username",
                 "password",
+                "salt",
                 "address",
                 "email"
         );
 
         this.username = dbCredentials.get("username");
         this.password = dbCredentials.get("password");
+        this.salt     = dbCredentials.get("salt");
         this.mail     = dbCredentials.get("email");
         this.address  = dbCredentials.get("address");
         dbConnection.closeConnection();

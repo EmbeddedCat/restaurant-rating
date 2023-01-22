@@ -13,7 +13,7 @@ import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.security.NoSuchAlgorithmException;
 import java.sql.SQLException;
-
+import java.security.SecureRandom;
 
 @WebServlet("/RegisterServlet")
 public class RegisterServlet extends HttpServlet {
@@ -22,17 +22,28 @@ public class RegisterServlet extends HttpServlet {
     public void init() {
 
     }
-
     @Override
     public void doPost(HttpServletRequest request,
                        HttpServletResponse response) throws ServletException, IOException {
         QueryManager queryManager       = new QueryManager();
         DBConnection dbConnection       = new DBConnection();
-        SecurityManager securityManager = new SecurityManager();
+        SecureRandom secureRandom = new SecureRandom();
 
-        String enctypted_pass;
+        byte[] salt = new byte[8]; // the salt to put in to the password. For security reasons.
+        secureRandom.nextBytes(salt);
+
+        StringBuilder salt_str = new StringBuilder(); // the salt as string.
+        for (int i = 0; i < 8; i++) {
+            salt_str.append((char) salt[i]);
+        }
+
+        StringBuilder newPassword = new StringBuilder();
+        newPassword.append(request.getParameter("password"));
+        newPassword.append(salt_str);
+
+        String encryptedPass;
         try {
-             enctypted_pass = securityManager.getHash(request.getParameter("password"));
+            encryptedPass = SecurityManager.getHash(newPassword.toString());
         } catch (NoSuchAlgorithmException e) {
             throw new RuntimeException(e);
         }
@@ -43,7 +54,8 @@ public class RegisterServlet extends HttpServlet {
                                 dbConnection.getConnection(),
                                 "rest_user",
                                 request.getParameter("username"),
-                                enctypted_pass,
+                                encryptedPass,
+                                salt_str.toString(),
                                 request.getParameter("address"),
                                 request.getParameter("email")
                                );
