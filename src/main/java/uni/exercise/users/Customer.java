@@ -8,12 +8,8 @@ import java.security.NoSuchAlgorithmException;
 import java.sql.SQLException;
 
 public class Customer extends User {
-
-
     @Override
     public void login(String username, String pass) throws UserNotFound {
-        SecurityManager securityManager = new SecurityManager();
-
         try {
             this.getCredentials(username);
         } catch (SQLException e) {
@@ -21,7 +17,8 @@ public class Customer extends User {
         }
         String hashedPassword = null;
         try {
-            hashedPassword = securityManager.getHash(pass);
+            String saltedPassword = pass + this.salt;
+            hashedPassword = SecurityManager.getHash(saltedPassword);
         } catch (NoSuchAlgorithmException e) {
             throw new RuntimeException(e);
         }

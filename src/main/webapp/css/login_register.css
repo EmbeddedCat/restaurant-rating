@@ -51,6 +51,20 @@ input[type=text] {
     color: black;
 }
 
+input[type=email] {
+    position: relative;
+    border: none;
+    border-bottom: 1px solid gray;
+    margin-top: 20px;
+    margin-bottom: 10px;
+    width: 20%;
+    left: 39%;
+    height: 50px;
+    font-size: 130%;
+    color: black;
+}
+
+
 .login_btn {
     width: 10%;
     position: absolute;

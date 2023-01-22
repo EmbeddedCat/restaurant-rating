@@ -2,7 +2,7 @@ package uni.exercise.db;
 
 public enum Queries {
 
-    ADD_USER("INSERT INTO {0} (username, password, address, email) VALUES(?, ?, ?, ?)"),
+    ADD_USER("INSERT INTO {0} (username, password, salt, address, email) VALUES(?, ?,?, ?, ?)"),
     REMOVE_USER("DELETE FROM {0} WHERE username = ?"),
     USER_STAR_REST("INSERT INTO {0} (username, restaurant_address) VALUES(?, ?)"),
     ADD_REST("INSERT INTO {0} (restaurant_owner, restaurant_name, restaurant_address, restaurant_phone, restaurant_pic) VALUES(?, ?, ?, ?, ?) "),
