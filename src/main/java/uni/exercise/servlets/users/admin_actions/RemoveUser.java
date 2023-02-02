@@ -28,13 +28,23 @@ public class RemoveUser extends HttpServlet {
         String username = request.getParameter("username");
 
         try {
-            queryManager.removeFromDB(
+            if (queryManager.getFromDatabase(
                     username,
-                    Queries.REMOVE_USER.getQuery(),
+                    Queries.RETRIEVE_DETAILS.getQuery(),
                     dbConnection.getConnection(),
-                    "rest_user"
-            );
-            response.sendRedirect(request.getContextPath()+"/status/success_page.jsp");
+                    "app_admin",
+                    "username"
+            ).isEmpty()) {
+                response.sendRedirect(request.getContextPath()+"/status/failed_page.jsp");
+            } else {
+                queryManager.removeFromDB(
+                        username,
+                        Queries.REMOVE_USER.getQuery(),
+                        dbConnection.getConnection(),
+                        "rest_user"
+                );
+                response.sendRedirect(request.getContextPath()+"/status/success_page.jsp");
+            }
         } catch (SQLException e) {
             response.sendRedirect(request.getContextPath()+"/status/failed_page.jsp");
         }
