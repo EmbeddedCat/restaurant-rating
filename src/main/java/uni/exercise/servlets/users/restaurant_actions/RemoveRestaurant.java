@@ -29,17 +29,28 @@ public class RemoveRestaurant extends HttpServlet {
         DBConnection dbConnection = new DBConnection();
         // Get the restaurant address.
         String addr = request.getParameter("rest_addr");
+        String username = request.getParameter("username");
 
         try {
-            // remove restaurant.
-            queryManager.removeFromDB(
-                    addr,
-                    Queries.REMOVE_REST.getQuery(),
+            if (queryManager.getFromDatabase(
+                    username,
+                    Queries.RETRIEVE_DETAILS.getQuery(),
                     dbConnection.getConnection(),
-                    "restaurant"
-            );
+                    "app_admin",
+                    "username"
+            ).isEmpty()) {
+                response.sendRedirect(request.getContextPath()+"/status/failed_page.jsp");
+            } else {
+                // remove restaurant.
+                queryManager.removeFromDB(
+                        addr,
+                        Queries.REMOVE_REST.getQuery(),
+                        dbConnection.getConnection(),
+                        "restaurant"
+                );
+                response.sendRedirect(request.getContextPath()+"/status/success_page.jsp");
+            }
             dbConnection.closeConnection();
-            response.sendRedirect(request.getContextPath()+"/status/success_page.jsp");
         } catch (SQLException e) {
             response.sendRedirect(request.getContextPath()+"/status/failed_page.jsp");
         }
