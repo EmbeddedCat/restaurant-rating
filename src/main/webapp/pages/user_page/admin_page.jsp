@@ -15,8 +15,10 @@
         String username  = (String) request.getSession().getAttribute("username");
         String email     = (String) request.getSession().getAttribute("email");
         String address   = (String) request.getSession().getAttribute("address");
+        String role      = (String) request.getSession().getAttribute("role");
 
-        if (is_login == null || username == null || email == null || address == null) {
+        if (is_login == null || username == null || email == null || address == null
+            || !role.equals("admin")) {
             response.sendRedirect(request.getContextPath()+"/status/failed_page.jsp");
         }
     %>
