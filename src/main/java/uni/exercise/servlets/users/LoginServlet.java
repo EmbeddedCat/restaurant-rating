@@ -46,8 +46,10 @@ public class LoginServlet extends HttpServlet {
                     "app_admin",
                     "username"
             ).isEmpty()) {
+                request.getSession().setAttribute("role", "user");
                 response.sendRedirect(request.getContextPath()+"/pages/user_page/user_page.jsp");
             } else {
+                request.getSession().setAttribute("role", "admin");
                 response.sendRedirect(request.getContextPath()+"/pages/user_page/admin_page.jsp");
             }
         }
