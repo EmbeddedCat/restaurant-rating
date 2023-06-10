@@ -12,6 +12,10 @@ public enum Queries {
     GET_RESTS("SELECT * FROM {0} natural join (SELECT restaurant_name, COUNT(restaurant_address) FROM (SELECT * FROM stared natural join restaurant) as test GROUP BY restaurant_name order by count DESC) as result;"),
     RETRIEVE_DETAILS("SELECT * FROM {0} WHERE username = ?");
 
+    // Add a query to retrieve restaurant based on filter data.
+    // Add a query to update user details if the user want to change them
+    // Add a query to allow the users to change their passwords.
+
     private final String query;
 
     Queries(String query) {

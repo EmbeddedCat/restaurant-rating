@@ -47,6 +47,7 @@
     <br><br><br><br>
     <br><br><br><br>
 
+    <!-- Allow the user to change the settings below -->
     <table id="details">
         <tr>
             <th> username </th>
