@@ -45,6 +45,7 @@
     <br><br><br><br>
     <br><br><br><br>
 
+    <!-- TODO - allow user to chagne the settings below. -->
     <table id="details">
         <tr>
             <th> username </th>

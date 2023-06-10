@@ -16,7 +16,7 @@ import java.sql.SQLException;
 import java.security.SecureRandom;
 
 @WebServlet("/RegisterServlet")
-public class RegisterServlet extends HttpServlet {
+public class Register extends HttpServlet {
 
     @Override
     public void init() {

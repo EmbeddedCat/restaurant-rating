@@ -1,0 +1,4 @@
+- Create a email based 2-factor-verification service
+- Create filters
+- Allow the user to modify the account details
+- Allow the users to restore their passwords in case they forgot them
