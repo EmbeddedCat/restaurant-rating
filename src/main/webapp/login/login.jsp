@@ -38,7 +38,7 @@
 
     <div>
         <!-- TODO - Here call the servlet-->
-        <form action="../LoginServlet" method="post" onsubmit="verify_login()">
+        <form action="../Login" method="post" onsubmit="verify_login()">
             <div class="input_texts">
                 <b>Username</b>
             </div>

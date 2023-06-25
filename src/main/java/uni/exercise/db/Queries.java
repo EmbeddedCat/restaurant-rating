@@ -10,7 +10,9 @@ public enum Queries {
     SEARCH_REST("SELECT * FROM {0} WHERE restaurant_name = ?"),
     GET_STARS("SELECT COUNT(*) AS stars FROM {0} WHERE restaurant_address = ?"),
     GET_RESTS("SELECT * FROM {0} natural join (SELECT restaurant_name, COUNT(restaurant_address) FROM (SELECT * FROM stared natural join restaurant) as test GROUP BY restaurant_name order by count DESC) as result;"),
-    RETRIEVE_DETAILS("SELECT * FROM {0} WHERE username = ?");
+    RETRIEVE_DETAILS("SELECT * FROM {0} WHERE username = ?"),
+    UPDATE_DETAILS("UPDATE {0} SET address = ?, email = ? WHERE username = ?");
+
 
     // Add a query to retrieve restaurant based on filter data.
     // Add a query to update user details if the user want to change them

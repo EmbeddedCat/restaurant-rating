@@ -14,6 +14,7 @@ CREATE TABLE restaurant
     restaurant_address     varchar(80) not null,
     restaurant_phone       varchar(12) unique not null,
     restaurant_pic         varchar(500),
+    restaurant_filters     varchar(500),
     primary key(restaurant_address),
     foreign key(restaurant_owner) references rest_user 
 );

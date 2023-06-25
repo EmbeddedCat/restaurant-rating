@@ -1,4 +1,59 @@
 package uni.exercise.servlets.users;
 
-public class UpdateDetails {
+import uni.exercise.db.DBConnection;
+import uni.exercise.db.Queries;
+import uni.exercise.db.QueryManager;
+import uni.exercise.users.Customer;
+import uni.exercise.users.user_exceptions.UserNotFound;
+
+import javax.servlet.ServletException;
+import javax.servlet.annotation.WebServlet;
+import javax.servlet.http.HttpServlet;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+import java.io.IOException;
+import java.sql.SQLException;
+
+
+@WebServlet("/UpdateDetails")
+public class UpdateDetails extends HttpServlet {
+    @Override
+    public void init() {
+
+    }
+
+    @Override
+    public void doPost(HttpServletRequest request,
+                       HttpServletResponse response) throws ServletException, IOException {
+        QueryManager queryManager = new QueryManager();
+        DBConnection dbConnection = new DBConnection();
+
+        String updated_email = (String) request.getParameter("change_email_name");
+        String updated_addr  = (String) request.getParameter("change_address_name");
+        String username;
+        // check wether the user if actually connected.
+        Boolean is_loggedin = (Boolean) request.getSession().getAttribute("is_login");
+        if (!is_loggedin) {
+            response.sendRedirect(request.getContextPath()+"/status/failed_page.jsp");
+        }
+
+        username = (String) request.getSession().getAttribute("username");
+        try {
+            // Store the updated values back to database.
+            queryManager.saveToDatabase(
+                    Queries.UPDATE_DETAILS.getQuery(),
+                    dbConnection.getConnection(),
+                    "rest_user",
+                    updated_addr,
+                    updated_email,
+                    username
+            );
+            request.getSession().setAttribute("email", updated_email);
+            request.getSession().setAttribute("address", updated_addr);
+            response.sendRedirect(request.getContextPath()+"/status/success_page.jsp");
+        } catch (SQLException e) {
+            System.out.println(e);
+            response.sendRedirect(request.getContextPath()+"/status/failed_page.jsp");
+        }
+    }
 }

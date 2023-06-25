@@ -32,7 +32,7 @@
     </div><br><br><br><br><br><br><br><br><br>
 
     <div>
-        <form action="../RegisterServlet" method="post" onsubmit="verify_register()">
+        <form action="../Register" method="post" onsubmit="verify_register()">
             <div class="input_texts">
                 <b>Username</b>
             </div>
