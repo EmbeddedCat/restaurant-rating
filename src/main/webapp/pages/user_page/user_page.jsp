@@ -7,6 +7,7 @@
     <link rel="stylesheet" href="../../css/login_register.css">
     <link rel="stylesheet" href="../../css/index.css">
     <script src="../../js/verity_new_restaurant.js"></script>
+    <script src="../../js/change_profile_info.js"></script>
 </head>
 <body>
 
@@ -45,19 +46,29 @@
     <br><br><br><br>
     <br><br><br><br>
 
-    <!-- TODO - allow user to chagne the settings below. -->
-    <table id="details">
-        <tr>
-            <th> username </th>
-            <th> address </th>
-            <th> email </th>
-        </tr>
-        <tr>
-            <td> <%=username%> </td>
-            <td> <%=address%> </td>
-            <td> <%=email%> </td>
-        </tr>
-    </table><br><br><br><br><br>
+
+    <form action="../../UpdateDetails" method="post">
+        <table id="details">
+            <tr> 
+                <th> username </th>
+                <th> address </th>
+                <th> email </th>
+            </tr>c
+            <tr>
+                <td> <%=username%> </td>
+                <td id="change_addr_td" onclick="change_address()"> 
+                    <%=address%>
+                </td>
+                <td id="change_email_td" onclick="change_email()">
+                    <%=email%> 
+                </td>
+            </tr>
+        </table><br>
+        <input type="hidden" id="change_addr" name="change_address_name" value=<%=address%>>
+        <input type="hidden" id="change_email" name="change_email_name" value=<%=email%>>
+        <input type="submit" class="register_btn" value="Save">
+        <br><br><br><br><br>
+    </form>
 
     <form action="../../AddRestaurant" method="post" onsubmit="verify_add_rest()">
         <div class="input_texts">

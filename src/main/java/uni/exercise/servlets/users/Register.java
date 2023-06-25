@@ -15,7 +15,7 @@ import java.security.NoSuchAlgorithmException;
 import java.sql.SQLException;
 import java.security.SecureRandom;
 
-@WebServlet("/RegisterServlet")
+@WebServlet("/Register")
 public class Register extends HttpServlet {
 
     @Override
@@ -25,8 +25,8 @@ public class Register extends HttpServlet {
     @Override
     public void doPost(HttpServletRequest request,
                        HttpServletResponse response) throws ServletException, IOException {
-        QueryManager queryManager       = new QueryManager();
-        DBConnection dbConnection       = new DBConnection();
+        QueryManager queryManager = new QueryManager();
+        DBConnection dbConnection = new DBConnection();
         SecureRandom secureRandom = new SecureRandom();
 
         byte[] salt = new byte[8]; // the salt to put in to the password. For security reasons.

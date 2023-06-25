@@ -48,18 +48,28 @@
     <br><br><br><br>
 
     <!-- Allow the user to change the settings below -->
-    <table id="details">
-        <tr>
-            <th> username </th>
-            <th> address </th>
-            <th> email </th>
-        </tr>
-        <tr>
-            <td> <%=username%> </td>
-            <td> <%=address%> </td>
-            <td> <%=email%> </td>
-        </tr>
-    </table><br><br><br><br><br>
+    <form action="../../PassRecovery" method="post">
+        <table id="details">
+            <tr> 
+                <th> username </th>
+                <th> address </th>
+                <th> email </th>
+            </tr>
+            <tr>
+                <td> <%=username%> </td>
+                <td> 
+                    <input type="text" id="change_addr" name="change_address_name" value=<%=address%>>
+                </td>
+                <td>
+                    <input type="text" id="change_email" name="change_email_name" value=<%=email%>>
+                </td>
+                <!--<td> <%=address%> </td>
+                <td> <%=email%> </td>-->
+            </tr>
+        </table><br>
+        <input type="submit" class="register_btn" value="Change informations">
+        <br><br><br><br><br>
+    </form>
 
     <form action="../../AddRestaurant" method="post" onsubmit="verify_add_rest()">
         <div class="input_texts">

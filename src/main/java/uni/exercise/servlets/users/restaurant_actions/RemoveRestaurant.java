@@ -22,7 +22,6 @@ public class RemoveRestaurant extends HttpServlet {
     @Override
     public void doPost(HttpServletRequest request,
                        HttpServletResponse response) throws ServletException, IOException {
-
         // Make a new query manager.
         QueryManager queryManager = new QueryManager();
         // Establish new connection to the database.

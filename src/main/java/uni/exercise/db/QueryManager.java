@@ -26,7 +26,6 @@ public class QueryManager {
                 preparedStatement.setString(index, (String) input);
             }
         }
-
         return (isWrite)? preparedStatement.executeUpdate() : preparedStatement.executeQuery();
     }
 
