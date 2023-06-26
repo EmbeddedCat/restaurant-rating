@@ -29,18 +29,18 @@
     </div>
     <div class="login_register_title">
         <b>
-            <a href="../../login/login.jsp" class="show_text" >Login</a> / <a href="../../register/register.jsp" class="hide_text">Register</a>  / 
-            <a href="../pages/passrecovery/passwordrecovery.jsp" class="hide_text" >Password Recovery</a>
+            <a href="../../login/login.jsp" class="hide_text" >Login</a> / <a href="../../register/register.jsp" class="hide_text">Register</a> /
+            <a href="#passwordrecovery" class="show_text">Password Recovery</a>
         </b>
     </div><br><br><br><br><br><br><br><br><br>
 
     <div>
         <!-- TODO - Here call the servlet-->
-        <form action="../../AuthValidator" method="post" onsubmit="verify_auth()">
+        <form action="../../PassRecovery" method="post" onsubmit="verify_passwd_recov()">
             <div class="input_texts">
-                <b>Two Factor Auth</b>
+                <b>Password Recovery Service</b>
             </div>
-            <input type="text" id="auth_code" name="userAuthCode" placeholder="XXXX"><br>
+            <input type="email" id="pass_recov" name="passwordRecoveryEmail" placeholder="Your email"><br>
             <input type="submit" class="login_btn" value="Send">
         </form>
     </div>

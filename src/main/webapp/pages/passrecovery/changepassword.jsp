@@ -27,21 +27,26 @@
             <h1 style="font-size:50px">Restaurant Rating</h1>
         </div>
     </div>
+
     <div class="login_register_title">
         <b>
-            <a href="../../login/login.jsp" class="show_text" >Login</a> / <a href="../../register/register.jsp" class="hide_text">Register</a>  / 
-            <a href="../pages/passrecovery/passwordrecovery.jsp" class="hide_text" >Password Recovery</a>
+            <a href="#login" class="show_text" >Login</a> / <a href="../../register/register.jsp" class="hide_text">Register</a> / 
+            <a href="passwordrecovery.jsp" class="hide_text" >Password Recovery</a>
         </b>
     </div><br><br><br><br><br><br><br><br><br>
 
     <div>
         <!-- TODO - Here call the servlet-->
-        <form action="../../AuthValidator" method="post" onsubmit="verify_auth()">
+        <form action="../../ChangePass" method="post" onsubmit="verify_change_passwd()">
             <div class="input_texts">
-                <b>Two Factor Auth</b>
+                <b>New password</b>
             </div>
-            <input type="text" id="auth_code" name="userAuthCode" placeholder="XXXX"><br>
-            <input type="submit" class="login_btn" value="Send">
+            <input type="password" id="new_password" name="newPassword" placeholder="New password"><br>
+            <div class="input_texts">
+                <b>New password again</b>
+            </div>
+            <input type="password" id="new_password_again" name="newPasswordAgain" placeholder="New password again"><br><br>
+            <input type="submit" class="login_btn" value="Login">
         </form>
     </div>
 </body>

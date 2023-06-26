@@ -27,7 +27,8 @@
     </div>
     <div class="login_register_title">
         <b>
-            <a href="../login/login.jsp" class="hide_text">Login</a> / <a href="#register" class="show_text">Register</a>
+            <a href="../login/login.jsp" class="hide_text">Login</a> / <a href="#register" class="show_text">Register</a> / 
+            <a href="../pages/passrecovery/passwordrecovery.jsp" class="hide_text" >Password Recovery</a>
         </b>
     </div><br><br><br><br><br><br><br><br><br>
 

@@ -11,7 +11,9 @@ public enum Queries {
     GET_STARS("SELECT COUNT(*) AS stars FROM {0} WHERE restaurant_address = ?"),
     GET_RESTS("SELECT * FROM {0} natural join (SELECT restaurant_name, COUNT(restaurant_address) FROM (SELECT * FROM stared natural join restaurant) as test GROUP BY restaurant_name order by count DESC) as result;"),
     RETRIEVE_DETAILS("SELECT * FROM {0} WHERE username = ?"),
-    UPDATE_DETAILS("UPDATE {0} SET address = ?, email = ? WHERE username = ?");
+    CHECK_IF_USER_IS_ADMIN("SELECT * FROM {0}, rest_user WHERE username = ? AND rest_user.user_id = app_admin.user_id"),
+    UPDATE_DETAILS("UPDATE {0} SET address = ?, email = ? WHERE username = ?"),
+    CHANGE_PASSWORD("UPDATE {0} SET password = ?, salt = ? WHERE email = ?");
 
 
     // Add a query to retrieve restaurant based on filter data.

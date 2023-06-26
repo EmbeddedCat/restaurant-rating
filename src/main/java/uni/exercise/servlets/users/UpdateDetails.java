@@ -28,12 +28,12 @@ public class UpdateDetails extends HttpServlet {
         QueryManager queryManager = new QueryManager();
         DBConnection dbConnection = new DBConnection();
 
-        String updated_email = (String) request.getParameter("change_email_name");
-        String updated_addr  = (String) request.getParameter("change_address_name");
+        String updatedEmail = (String) request.getParameter("change_email_name");
+        String updatedAddr  = (String) request.getParameter("change_address_name");
         String username;
         // check wether the user if actually connected.
-        Boolean is_loggedin = (Boolean) request.getSession().getAttribute("is_login");
-        if (!is_loggedin) {
+        Boolean isLoggedin = (Boolean) request.getSession().getAttribute("is_login");
+        if (!isLoggedin) {
             response.sendRedirect(request.getContextPath()+"/status/failed_page.jsp");
         }
 
@@ -44,12 +44,12 @@ public class UpdateDetails extends HttpServlet {
                     Queries.UPDATE_DETAILS.getQuery(),
                     dbConnection.getConnection(),
                     "rest_user",
-                    updated_addr,
-                    updated_email,
+                    updatedAddr,
+                    updatedEmail,
                     username
             );
-            request.getSession().setAttribute("email", updated_email);
-            request.getSession().setAttribute("address", updated_addr);
+            request.getSession().setAttribute("email", updatedEmail);
+            request.getSession().setAttribute("address", updatedAddr);
             response.sendRedirect(request.getContextPath()+"/status/success_page.jsp");
         } catch (SQLException e) {
             System.out.println(e);

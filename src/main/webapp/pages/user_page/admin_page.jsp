@@ -20,6 +20,8 @@
         if (is_login == null || username == null || email == null || address == null
             || !role.equals("admin")) {
             response.sendRedirect(request.getContextPath()+"/status/failed_page.jsp");
+        } else if (is_login == false) {
+            response.sendRedirect(request.getContextPath()+"/status/failed_page.jsp");
         }
     %>
     <!-- Header -->
