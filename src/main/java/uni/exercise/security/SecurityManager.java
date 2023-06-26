@@ -4,6 +4,7 @@ import java.math.BigInteger;
 import java.nio.charset.StandardCharsets;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
+import java.security.SecureRandom;
 
 public class SecurityManager {
 
@@ -22,4 +23,13 @@ public class SecurityManager {
         MessageDigest md = MessageDigest.getInstance("SHA-256");
         return toHexString(md.digest(message.getBytes(StandardCharsets.UTF_8)));
     }
+
+    public static int getTwoAuthCode() {
+        SecureRandom random = new SecureRandom();
+        byte bytes[] = new byte[2];
+        random.nextBytes(bytes);
+        // Get the random code.
+        return (int) (bytes[0] | bytes[1] << 8) & 0xEFFF;
+    }
+
 }

@@ -19,6 +19,8 @@
 
         if (is_login == null || username == null || email == null || address == null) {
             response.sendRedirect(request.getContextPath()+"/status/failed_page.jsp");
+        } else if (is_login == false) {
+            response.sendRedirect(request.getContextPath()+"/status/failed_page.jsp");
         }
     %>
     <!-- Header -->
@@ -56,7 +58,7 @@
             </tr>c
             <tr>
                 <td> <%=username%> </td>
-                <td id="change_addr_td" onclick="change_address()"> 
+                <td id="change_addr_td" onclick="change_address()">
                     <%=address%>
                 </td>
                 <td id="change_email_td" onclick="change_email()">

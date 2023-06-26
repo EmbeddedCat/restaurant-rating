@@ -9,8 +9,6 @@
 </head>
 <body>
 
-
-
     <!-- Header -->
     <div class="hero-image">
         <div class="topnav">
@@ -32,7 +30,8 @@
 
     <div class="login_register_title">
         <b>
-            <a href="#login" class="show_text" >Login</a> / <a href="../register/register.jsp" class="hide_text">Register</a>
+            <a href="#login" class="show_text" >Login</a> / <a href="../register/register.jsp" class="hide_text">Register</a> / 
+            <a href="../pages/passrecovery/passwordrecovery.jsp" class="hide_text" >Password Recovery</a>
         </b>
     </div><br><br><br><br><br><br><br><br><br>
 
