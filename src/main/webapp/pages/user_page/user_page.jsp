@@ -95,6 +95,15 @@
         </div>
         <input type="text" id="restaurant_pic" name="rest_pic" placeholder="Restaurant picture"><br>
 
+        <div class="search_filter">
+            Vegan
+            <input name="vegan" type="checkbox" value="vegan">
+            Street
+            <input name="street" type="checkbox" value="street">
+            Fast Food
+            <input name="fastfood" type="checkbox" value="fastfood">
+        </div><br>
+
         <input type="submit" class="register_btn" value="Add">
     </form>
 

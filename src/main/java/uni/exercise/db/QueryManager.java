@@ -51,7 +51,7 @@ public class QueryManager {
 
         if (conn == null) throw new SQLException("Failed to establish connection");
         ResultSet resultsFromDB;
-        resultsFromDB = (ResultSet) QueryManager.queryExecutor(MessageFormat.format(query, table), conn,false, selector);
+        resultsFromDB = (ResultSet) QueryManager.queryExecutor(MessageFormat.format(query, table), conn, false, selector);
 
         return QueryManager.retrieveData(resultsFromDB, Arrays.asList(retrieves));
     }

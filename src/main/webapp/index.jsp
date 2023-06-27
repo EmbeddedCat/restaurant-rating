@@ -47,6 +47,12 @@
                         "        </div><br><br>\n" +
                         "        <div>\n" +
                         "            <input class=\"search_input\" name=\"rest_name\" type=\"text\" placeholder=\"Restaurant name\"><br>\n" +
+                        "            <div class=\"search_filter\">Vegan\n" +
+                        "            <input name=\"vegan\" type=\"checkbox\" value=\"vegan\">\n" +
+                        "            Street\n" +
+                        "            <input name=\"street\" type=\"checkbox\" value=\"street\">\n" +
+                        "            Fast Food\n" +
+                        "            <input name=\"fastfood\" type=\"checkbox\" value=\"fastfood\"></div><br>\n" +
                         "            <input class=\"search_button\" type=\"submit\" value=\"Search\">\n" +
                         "        </div>\n" +
                         "    </form>\n" +
@@ -65,7 +71,6 @@
                             Queries.GET_RESTS.getQuery(),
                             dbConnection.getConnection(),
                             "restaurant",
-                            "restaurant_owner",
                             "restaurant_name",
                             "restaurant_address",
                             "restaurant_phone",
@@ -86,9 +91,6 @@
                                     "                        <th>\n" +
                                     "                            <img src=\"images/"+restaurants.get(i).get("restaurant_pic")+"\" alt=\"no image\">\n" +
                                     "                        </th>\n" +
-                                    "                    </tr>\n" +
-                                    "                    <tr>\n" +
-                                    "                        <td> "+restaurants.get(i).get("restaurant_owner")+" </td>\n" +
                                     "                    </tr>\n" +
                                     "                    <tr>\n" +
                                     "                        <td> "+restaurants.get(i).get("restaurant_name")+" </td>\n" +
