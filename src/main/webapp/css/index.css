@@ -85,6 +85,25 @@ body, html {
     color: black;
 }
 
+.search_filter {
+    position: relative;
+    border: none;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    width: 35%;
+    left: 42%;
+    height: 35px;
+    font-size: 135%;
+    color: black;
+}
+
+input[type=checkbox] {
+    margin: 4px 0 0;
+    line-height: normal;
+    width: 15px;
+    height: 15px;
+}
+
 .search_button {
     width: 10%;
     position: absolute;

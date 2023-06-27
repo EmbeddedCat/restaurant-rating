@@ -26,11 +26,19 @@ public class AddRestaurant extends HttpServlet {
         DBConnection dbConnection = new DBConnection();
 
         // Get restaurant infos.
-        String owner = (String) request.getSession().getAttribute("username");
-        String name  = request.getParameter("rest_name");
-        String addr  = request.getParameter("rest_addr");
-        String phone = request.getParameter("rest_phone");
-        String pic   = request.getParameter("rest_pic");
+        String owner          = (String) request.getSession().getAttribute("username");
+        String name           = (String) request.getParameter("rest_name");
+        String addr           = (String) request.getParameter("rest_addr");
+        String phone          = (String) request.getParameter("rest_phone");
+        String pic            = (String) request.getParameter("rest_pic");
+        String veganFilter    = (String) request.getParameter("vegan");
+        String streetFilter   = (String) request.getParameter("street");
+        String fastFoodFilter = (String) request.getParameter("fastfood");
+
+        StringBuilder filters = new StringBuilder();
+        filters.append((veganFilter != null)? veganFilter:"").append(",");
+        filters.append((streetFilter != null)? streetFilter:"").append(",");
+        filters.append((fastFoodFilter != null)? veganFilter:"");
 
         try {
             // save restaurant infos.
@@ -38,15 +46,16 @@ public class AddRestaurant extends HttpServlet {
                     Queries.ADD_REST.getQuery(),
                     dbConnection.getConnection(),
                     "restaurant",
-                    owner,
                     name,
                     addr,
                     phone,
-                    pic
+                    pic,
+                    filters.toString()
             );
             dbConnection.closeConnection();
             response.sendRedirect(request.getContextPath()+"/status/success_page.jsp");
         } catch (SQLException e) {
+            System.out.println(e);
             response.sendRedirect(request.getContextPath()+"/status/failed_page.jsp");
         }
     }

@@ -29,24 +29,51 @@ public class Search extends HttpServlet {
         // Establish new connection to the database.
         DBConnection dbConnection = new DBConnection();
         // get restaurant name.
-        String name = request.getParameter("rest_name");
+        String name           = (String) request.getParameter("rest_name");
+        String veganFilter    = (String) request.getParameter("vegan");
+        String streetFilter   = (String) request.getParameter("street");
+        String fastFoodFilter = (String) request.getParameter("fastfood");
+
+        Boolean useFilters = false;
+        StringBuilder filters = new StringBuilder();
+        if (veganFilter != null || streetFilter != null || fastFoodFilter != null) {
+            useFilters = true;
+            filters.append((veganFilter != null)? veganFilter:"").append(",");
+            filters.append((streetFilter != null)? streetFilter:"").append(",");
+            filters.append((fastFoodFilter != null)? veganFilter:"");
+        }
 
         // get the info from db, for the specific restaurant.
         HashMap<String, String> rest_infos;
         HashMap<String, String> rest_stars;
 
         try {
-            rest_infos = queryManager.getFromDatabase(
-                    name,
-                    Queries.SEARCH_REST.getQuery(),
+            if (useFilters) {
+                rest_infos = queryManager.getFromDatabase(
+                    filters.toString(),
+                    Queries.SEARCH_REST_FILTERS.getQuery(),
                     dbConnection.getConnection(),
                     "restaurant",
-                    "restaurant_owner",
                     "restaurant_name",
+                    "restaurant_Owner",
                     "restaurant_address",
                     "restaurant_phone",
                     "restaurant_pic"
-            );
+                );
+            } else {
+                rest_infos = queryManager.getFromDatabase(
+                    name,
+                    Queries.SEARCH_REST_FILTERS.getQuery(),
+                    dbConnection.getConnection(),
+                    "restaurant",
+                    "restaurant_name",
+                    "restaurant_Owner",
+                    "restaurant_address",
+                    "restaurant_phone",
+                    "restaurant_pic"
+                );
+
+            }
 
             rest_stars = queryManager.getFromDatabase(
                     rest_infos.get("restaurant_address"),
