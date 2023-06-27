@@ -40,7 +40,7 @@ public abstract class User {
     }
 
     public void getCredentials(String username) throws SQLException {
-        HashMap<String, String> dbCredentials;
+        HashMap<String, Object> dbCredentials;
         QueryManager queryManager = new QueryManager();
         DBConnection dbConnection = new DBConnection();
 
@@ -56,11 +56,11 @@ public abstract class User {
                 "email"
         );
 
-        this.username = dbCredentials.get("username");
-        this.password = dbCredentials.get("password");
-        this.salt     = dbCredentials.get("salt");
-        this.mail     = dbCredentials.get("email");
-        this.address  = dbCredentials.get("address");
+        this.username = (String) dbCredentials.get("username");
+        this.password = (String) dbCredentials.get("password");
+        this.salt     = (String) dbCredentials.get("salt");
+        this.mail     = (String) dbCredentials.get("email");
+        this.address  = (String) dbCredentials.get("address");
         dbConnection.closeConnection();
     }
 

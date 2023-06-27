@@ -122,7 +122,7 @@
         <div class="input_texts">
             <b>Restaurant address</b>
         </div>
-        <input type="text" id="rest_to_remove" name="rest_addr" placeholder="restaurant to remove"><br>
+        <input type="text" id="rest_to_remove" name="rest_name" placeholder="restaurant to remove"><br>
 
         <input type="submit" class="register_btn" value="Remove">
     </form>
