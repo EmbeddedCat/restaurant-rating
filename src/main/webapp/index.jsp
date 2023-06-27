@@ -13,7 +13,7 @@
                         "<!DOCTYPE html>\n" +
                         "<html>\n" +
                         "<head>\n" +
-                        "    <title>Restaurant Rating</title>\n" +
+                        "    <title>Rate2Eat</title>\n" +
                         "    <meta name=\"viewport\" content=\"width=device-width, initial-scale=1\">\n" +
                         "    <link rel=\"stylesheet\" href=\"./css/index.css\">\n" +
                         "</head>\n" +
@@ -33,7 +33,7 @@
                         "    </div>\n" +
                         "\n" +
                         "    <div class=\"hero-text\">\n" +
-                        "        <h1 style=\"font-size:50px\">Restaurant Rating</h1>\n" +
+                        "        <h1 style=\"font-size:50px\">Rate2Eat</h1>\n" +
                         "    </div>\n" +
                         "</div>\n" +
                         "<br><br><br>\n" +

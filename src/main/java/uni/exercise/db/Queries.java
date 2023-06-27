@@ -8,7 +8,7 @@ public enum Queries {
     ADD_REST("INSERT INTO {0} (restaurant_owner, restaurant_name, restaurant_address, restaurant_phone, restaurant_pic, restaurant_filters) VALUES(?, ?, ?, ?, ?, ?) "),
     REMOVE_REST("DELETE FROM {0} WHERE restaurant_name = ?"),
     SEARCH_REST("SELECT * FROM {0} WHERE restaurant_name = ?"),
-    SEARCH_REST_FILTERS("SELECT * FROM {0} WHERE restaurant_filters LIKE '%?%'"),
+    SEARCH_REST_FILTERS("SELECT * FROM {0} WHERE restaurant_filters = ?"),
     GET_STARS("SELECT COUNT(*) AS stars FROM {0} WHERE restaurant_id = ?"),
     GET_RESTS("SELECT * FROM {0} natural join (SELECT restaurant_name, COUNT(restaurant_address) FROM (SELECT * FROM stared natural join restaurant) as test GROUP BY restaurant_name order by count DESC) as result;"),
     GET_OWNER("SELECT user_id FROM {0} WHERE rest_user.username = ?"),
