@@ -63,8 +63,7 @@
                 QueryManager queryManager = new QueryManager();
                 DBConnection dbConnection = new DBConnection();
 
-                ArrayList<HashMap<String, String>> restaurants = null;
-                HashMap<String, String> rest_stars;
+                ArrayList<HashMap<String, Object>> restaurants = null;
 
                 try {
                     restaurants = queryManager.getMultipleColDB(
@@ -74,7 +73,8 @@
                             "restaurant_name",
                             "restaurant_address",
                             "restaurant_phone",
-                            "restaurant_pic"
+                            "restaurant_pic",
+                            "restaurant_id"
                     );
 
                 } catch (SQLException e) {
@@ -89,22 +89,22 @@
                                     "                <table class=\"restaurants_temp\">\n" +
                                     "                    <tr>\n" +
                                     "                        <th>\n" +
-                                    "                            <img src=\"images/"+restaurants.get(i).get("restaurant_pic")+"\" alt=\"no image\">\n" +
+                                    "                            <img src=\"images/"+(String) restaurants.get(i).get("restaurant_pic")+"\" alt=\"no image\">\n" +
                                     "                        </th>\n" +
                                     "                    </tr>\n" +
                                     "                    <tr>\n" +
-                                    "                        <td> "+restaurants.get(i).get("restaurant_name")+" </td>\n" +
+                                    "                        <td> "+(String) restaurants.get(i).get("restaurant_name")+" </td>\n" +
                                     "                    </tr>\n" +
                                     "                    <tr>\n" +
-                                    "                        <td> "+restaurants.get(i).get("restaurant_address")+" </td>\n" +
+                                    "                        <td> "+(String) restaurants.get(i).get("restaurant_address")+" </td>\n" +
                                     "                    </tr>\n" +
                                     "                    <tr>\n" +
-                                    "                        <td> "+restaurants.get(i).get("restaurant_phone")+" </td>\n" +
+                                    "                        <td> "+(String) restaurants.get(i).get("restaurant_phone")+" </td>\n" +
                                     "                    </tr>\n" +
                                     "                    <tr>\n" +
                                     "                        <th>\n" +
                                     "                            <form action=\""+request.getContextPath()+"/StarRestaurant\" method=\"post\">\n" +
-                                    "                                <input type=text name=\"restaurant_addr\" value=\""+restaurants.get(i).get("restaurant_address")+"\" style=\"Display: none;\">" +
+                                    "                                <input type=text name=\"restaurant_id\" value=\""+String.valueOf(restaurants.get(i).get("restaurant_id"))+"\" style=\"Display: none;\">" +
                                     "                                <input class=\"star_submit\" type=\"submit\" value=\"You like it;\">\n" +
                                     "                            </form>\n" +
                                     "                        </th>\n" +

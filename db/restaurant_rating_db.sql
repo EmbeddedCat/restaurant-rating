@@ -14,7 +14,7 @@ CREATE TABLE restaurant
     restaurant_id          SERIAL,
     restaurant_owner       int not null,
     restaurant_name        varchar(50) unique not null,
-    restaurant_address     varchar(80) not null,
+    restaurant_address     varchar(80) unique not null,
     restaurant_phone       varchar(12) unique not null,
     restaurant_pic         varchar(500),
     restaurant_filters     varchar(500),

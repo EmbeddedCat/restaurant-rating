@@ -11,6 +11,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.sql.SQLException;
+import java.util.HashMap;
 
 @WebServlet("/StarRestaurant")
 public class StarRestaurant extends HttpServlet {
@@ -25,24 +26,38 @@ public class StarRestaurant extends HttpServlet {
 
         QueryManager queryManager = new QueryManager();
         DBConnection dbConnection = new DBConnection();
+        String restaurantId = request.getParameter("restaurant_id");
         String username = (String) request.getSession().getAttribute("username");
-        String restaurant_addr = request.getParameter("restaurant_addr");
 
+        Integer commiterId;
 
         if (username == null) {
             response.sendRedirect(request.getContextPath()+"/login/login.jsp");
             return;
         }
 
+        HashMap<String, Object> commiterInfos;
+
         try {
+
+            commiterInfos = queryManager.getFromDatabase(
+                    username,
+                    Queries.GET_OWNER.getQuery(),
+                    dbConnection.getConnection(),
+                    "rest_user",
+                    "user_id"
+            );
+            commiterId = (Integer) commiterInfos.get("user_id");
+
             queryManager.saveToDatabase(
                     Queries.USER_STAR_REST.getQuery(),
                     dbConnection.getConnection(),
                     "stared",
-                    username,
-                    restaurant_addr
+                    commiterId,
+                    Integer.parseInt(restaurantId)
             );
             dbConnection.closeConnection();
+            request.getSession().invalidate();
             response.sendRedirect(request.getContextPath()+"/status/success_page.jsp");
         } catch (SQLException e) {
             e.printStackTrace();

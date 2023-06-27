@@ -7,6 +7,7 @@
     String phone = (String) request.getSession().getAttribute("rest_phone");
     String pic   = (String) request.getSession().getAttribute("rest_pic");
     String stars = (String) request.getSession().getAttribute("rest_stars");
+    String id    = (String) request.getSession().getAttribute("rest_id");
 %>
 
 <!DOCTYPE html>
@@ -65,7 +66,7 @@
                          <tr>
                             <th>
                                 <form action="../StarRestaurant" method="post">
-                                     <input type=text name="restaurant_addr" value="<%=addr%>" style="Display: none;">
+                                     <input type=text name="restaurant_id" value="<%=id%>" style="Display: none;">
                                      <input class="star_submit" type="submit" value="You like it;">
                                 </form>
                             </th>

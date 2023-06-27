@@ -44,56 +44,68 @@ public class Search extends HttpServlet {
         }
 
         // get the info from db, for the specific restaurant.
-        HashMap<String, String> rest_infos;
-        HashMap<String, String> rest_stars;
+        HashMap<String, Object> restInfos;
+        HashMap<String, Object> restStars;
+        HashMap<String, Object> ownerInfos;
 
         try {
             if (useFilters) {
-                rest_infos = queryManager.getFromDatabase(
+                restInfos = queryManager.getFromDatabase(
                     filters.toString(),
                     Queries.SEARCH_REST_FILTERS.getQuery(),
                     dbConnection.getConnection(),
                     "restaurant",
+                    "restaurant_id",
+                    "restaurant_owner",
                     "restaurant_name",
-                    "restaurant_Owner",
                     "restaurant_address",
                     "restaurant_phone",
                     "restaurant_pic"
                 );
             } else {
-                rest_infos = queryManager.getFromDatabase(
+                restInfos = queryManager.getFromDatabase(
                     name,
-                    Queries.SEARCH_REST_FILTERS.getQuery(),
+                    Queries.SEARCH_REST.getQuery(),
                     dbConnection.getConnection(),
                     "restaurant",
+                    "restaurant_id",
+                    "restaurant_owner",
                     "restaurant_name",
-                    "restaurant_Owner",
                     "restaurant_address",
                     "restaurant_phone",
                     "restaurant_pic"
                 );
-
             }
 
-            rest_stars = queryManager.getFromDatabase(
-                    rest_infos.get("restaurant_address"),
+            ownerInfos = queryManager.getFromDatabase(
+                    (Integer) restInfos.get("restaurant_owner"),
+                    Queries.GET_OWNER_BY_OWNER_ID.getQuery(),
+                    dbConnection.getConnection(),
+                    "rest_user",
+                    "username"
+            );
+
+            restStars = queryManager.getFromDatabase(
+                    restInfos.get("restaurant_id"),
                     Queries.GET_STARS.getQuery(),
                     dbConnection.getConnection(),
                     "stared",
                     "stars"
             );
 
-            request.getSession().setAttribute("rest_owner", rest_infos.get("restaurant_owner"));
-            request.getSession().setAttribute("rest_name", rest_infos.get("restaurant_name"));
-            request.getSession().setAttribute("rest_addr", rest_infos.get("restaurant_address"));
-            request.getSession().setAttribute("rest_phone", rest_infos.get("restaurant_phone"));
-            request.getSession().setAttribute("rest_pic", rest_infos.get("restaurant_pic"));
+            request.getSession().setAttribute("rest_owner", (String) ownerInfos.get("username"));
+            request.getSession().setAttribute("rest_name",  (String) restInfos.get("restaurant_name"));
+            request.getSession().setAttribute("rest_addr",  (String) restInfos.get("restaurant_address"));
+            request.getSession().setAttribute("rest_phone", (String) restInfos.get("restaurant_phone"));
+            request.getSession().setAttribute("rest_pic",   (String) restInfos.get("restaurant_pic"));
+            request.getSession().setAttribute("rest_id",    String.valueOf(restInfos.get("restaurant_id")));
             // Get stars.
-            request.getSession().setAttribute("rest_stars", rest_stars.get("stars"));
+            request.getSession().setAttribute("rest_stars", String.valueOf(restStars.get("stars")));
 
             dbConnection.closeConnection();
             response.sendRedirect(request.getContextPath()+"/restaurant/restaurant.jsp");
         } catch (SQLException e) {
+            System.out.println(e);
             response.sendRedirect(request.getContextPath()+"/status/failed_page.jsp");
         }
     }

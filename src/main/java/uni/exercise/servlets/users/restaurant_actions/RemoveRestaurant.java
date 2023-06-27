@@ -27,13 +27,13 @@ public class RemoveRestaurant extends HttpServlet {
         // Establish new connection to the database.
         DBConnection dbConnection = new DBConnection();
         // Get the restaurant address.
-        String addr = request.getParameter("rest_addr");
+        String addr = request.getParameter("rest_name");
         String username = request.getParameter("username");
 
         try {
             if (queryManager.getFromDatabase(
                     username,
-                    Queries.RETRIEVE_DETAILS.getQuery(),
+                    Queries.CHECK_IF_USER_IS_ADMIN.getQuery(),
                     dbConnection.getConnection(),
                     "app_admin",
                     "username"

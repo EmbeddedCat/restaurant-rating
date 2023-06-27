@@ -30,7 +30,7 @@ public class RemoveUser extends HttpServlet {
         try {
             if (queryManager.getFromDatabase(
                     username,
-                    Queries.RETRIEVE_DETAILS.getQuery(),
+                    Queries.CHECK_IF_USER_IS_ADMIN.getQuery(),
                     dbConnection.getConnection(),
                     "app_admin",
                     "username"

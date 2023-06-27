@@ -11,6 +11,8 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.sql.SQLException;
+import java.util.HashMap;
+
 
 @WebServlet("/AddRestaurant")
 public class AddRestaurant extends HttpServlet {
@@ -26,7 +28,7 @@ public class AddRestaurant extends HttpServlet {
         DBConnection dbConnection = new DBConnection();
 
         // Get restaurant infos.
-        String owner          = (String) request.getSession().getAttribute("username");
+        String owner_username = (String) request.getSession().getAttribute("username");
         String name           = (String) request.getParameter("rest_name");
         String addr           = (String) request.getParameter("rest_addr");
         String phone          = (String) request.getParameter("rest_phone");
@@ -35,17 +37,30 @@ public class AddRestaurant extends HttpServlet {
         String streetFilter   = (String) request.getParameter("street");
         String fastFoodFilter = (String) request.getParameter("fastfood");
 
+        Integer owner_id;
+        HashMap<String, Object> owner_info;
+
         StringBuilder filters = new StringBuilder();
         filters.append((veganFilter != null)? veganFilter:"").append(",");
         filters.append((streetFilter != null)? streetFilter:"").append(",");
         filters.append((fastFoodFilter != null)? veganFilter:"");
 
         try {
+            owner_info = queryManager.getFromDatabase(
+                owner_username,
+                Queries.GET_OWNER.getQuery(),
+                dbConnection.getConnection(),
+                "rest_user",
+                "user_id"
+            );
+            owner_id = (Integer) owner_info.get("user_id");
+
             // save restaurant infos.
             queryManager.saveToDatabase(
                     Queries.ADD_REST.getQuery(),
                     dbConnection.getConnection(),
                     "restaurant",
+                    owner_id,
                     name,
                     addr,
                     phone,
