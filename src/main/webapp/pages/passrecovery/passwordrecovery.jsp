@@ -24,7 +24,7 @@
         </div>
 
         <div class="hero-text">
-            <h1 style="font-size:50px">Restaurant Rating</h1>
+            <h1 style="font-size:50px">Rate2Eat</h1>
         </div>
     </div>
     <div class="login_register_title">
